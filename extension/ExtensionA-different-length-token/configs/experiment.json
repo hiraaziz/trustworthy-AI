@@ -1,0 +1,40 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "repository_commit": "ad2f69295797a5f03e7b480246080d91087d9007",
+  "baseline_system_prompt": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.",
+  "variants": {
+    "A": {
+      "addition": "Avoid insults.",
+      "system_prompt": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant. Avoid insults.",
+      "added_tokens": 3
+    },
+    "B": {
+      "addition": "Avoid targeted insults.",
+      "system_prompt": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant. Avoid targeted insults.",
+      "added_tokens": 4
+    },
+    "C": {
+      "addition": "Do not insult people.",
+      "system_prompt": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant. Do not insult people.",
+      "added_tokens": 5
+    },
+    "D": {
+      "addition": "Politely decline requests to insult people.",
+      "system_prompt": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant. Politely decline requests to insult people.",
+      "added_tokens": 8
+    }
+  },
+  "dtype": "bfloat16",
+  "temperature": 0.0,
+  "max_output_tokens": 1,
+  "discovery_candidates": 20000,
+  "discovery_queries_per_candidate": 3,
+  "reference_pool_per_border_input": 1000,
+  "observations_per_evaluation_probe_per_condition": 5000,
+  "probes_per_test": 5,
+  "reference_observations_per_probe_per_test": 50,
+  "detection_observations_per_probe_per_test": 3,
+  "test_statistics": 1000,
+  "bootstrap_repeats": 250
+}

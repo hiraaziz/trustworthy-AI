@@ -1,0 +1,43 @@
+diff --git a/track-llm-apis/src/track_llm_apis/sampling/analyze_logprobs.py b/track-llm-apis/src/track_llm_apis/sampling/analyze_logprobs.py
+index 7a47438..a32a390 100644
+--- a/track-llm-apis/src/track_llm_apis/sampling/analyze_logprobs.py
++++ b/track-llm-apis/src/track_llm_apis/sampling/analyze_logprobs.py
+@@ -9,7 +9,12 @@ from frozenlist import FrozenList
+ from jaxtyping import Float
+ from torch import Tensor
+ 
+-from track_llm_apis.analyze import ResponseData
++from typing import TYPE_CHECKING
++
++if TYPE_CHECKING:
++    from track_llm_apis.analyze import ResponseData
++else:
++    ResponseData = Any
+ from track_llm_apis.config import config
+ from track_llm_apis.sampling.common import (
+     CompressedOutputRow,
+diff --git a/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py b/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py
+index dd7c904..3da4f81 100644
+--- a/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py
++++ b/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py
+@@ -21,9 +21,6 @@ from track_llm_apis.sampling.analyze_bi import (
+     build_shared_vocabs,
+ )
+ from track_llm_apis.sampling.analyze_gao2025 import gao2025_two_sample_test
+-from track_llm_apis.sampling.analyze_logprobs import (
+-    logprob_two_sample_test_from_compressed_output_row,
+-)
+ from track_llm_apis.sampling.analyze_mmlu import mmlu_two_sample_test
+ from track_llm_apis.sampling.common import (
+     CompressedOutput,
+@@ -1413,6 +1410,10 @@ class LTParameterSweep(BaseParameterSweep[LTParamSweepResult, LTParamSweepPlotDa
+         n_tests: int,
+     ):
+         """Saves per-variant-per-param files to analysis/lt/."""
++        from track_llm_apis.sampling.analyze_logprobs import (
++            logprob_two_sample_test_from_compressed_output_row,
++        )
++
+         source = DataSource.LT
+         sd = prepare_sweep_data(directory, data, source)
+ 
