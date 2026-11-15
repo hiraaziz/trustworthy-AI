@@ -1,0 +1,9 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "traffic_dataset_fingerprint": "3cd5574d57e1498f",
+  "candidates": 20000,
+  "candidate_observations": 60000,
+  "discovered_border_inputs": 3002,
+  "upstream_result": "/workspace/B3IT_Figure1_Corrected/data/bi_phase_1/phase_1a_T=0.0/Qwen2fQwen2.5-0.5B-Instruct_cb6a59f9.json"
+}

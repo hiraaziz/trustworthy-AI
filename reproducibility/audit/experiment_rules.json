@@ -1,0 +1,80 @@
+{
+  "repository": "https://github.com/timothee-chauvin/token-efficient-change-detection-llm-apis.git",
+  "commit": "ad2f69295797a5f03e7b480246080d91087d9007",
+  "models": [
+    "Qwen/Qwen2.5-0.5B-Instruct",
+    "google/gemma-3-1b-it",
+    "microsoft/Phi-4-mini-instruct"
+  ],
+  "workflow": {
+    "one_cell_at_a_time": true,
+    "estimate_time_each_step": true,
+    "wait_for_user_output": true,
+    "independent_model_notebooks": true,
+    "fresh_inputs_and_results": true,
+    "reuse_upstream_functions": true,
+    "record_all_deviations": true,
+    "resume_completed_stages": true
+  },
+  "discovery": {
+    "traffic": "Full upstream LMSYS loader and filters",
+    "candidates": 20000,
+    "queries_per_candidate": 3,
+    "temperature": 0,
+    "output_tokens": 1,
+    "one_full_original_sampler_call": true
+  },
+  "calibration": {
+    "observations_per_discovered_input": 1000,
+    "one_full_original_sampler_call": true,
+    "selected_probes": 120,
+    "selection": "Upstream eligibility and insertion order",
+    "report_if_fewer_than_120": true
+  },
+  "perturbations": {
+    "lora_examples": 128,
+    "lora_epochs": 1,
+    "lora_batch_size": 1,
+    "lora_optimizer": "SGD",
+    "lora_learning_rate": 1e-06,
+    "lora_rank": 8,
+    "lora_alpha": 8,
+    "lora_dropout": 0,
+    "lora_target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "training_data_and_sequence_handling": "Literal upstream behavior",
+    "phi_fused_qkv": "Preserve original architecture",
+    "noise_std": 0.000244140625,
+    "magnitude_pruning_fraction": 0.00390625,
+    "random_pruning_fraction": 0.00390625,
+    "creation_dtype": "Upstream BF16 behavior",
+    "checkpointing": "Only if needed, after equivalence check"
+  },
+  "evaluation": {
+    "conditions_per_model": 5,
+    "observations_per_probe_per_condition": 5000,
+    "reference_samples": 50,
+    "prompt_counts": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "detection_sample_counts": [
+      1,
+      3,
+      10,
+      20,
+      50
+    ],
+    "repeated_tests": 1000,
+    "per_variant_rows_per_model": 80,
+    "summary_rows_per_model": 20,
+    "scoring_cost_and_uncertainty": "Original repository functions",
+    "combined_aggregation": "Equal mean of 12 model-variant AUCs per setting"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "model": "microsoft/Phi-4-mini-instruct",
+  "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "candidates": 20000,
+  "candidate_observations": 60000,
+  "traffic_prompts": 4502,
+  "discovered_border_inputs": 3072,
+  "upstream_result": "/workspace/B3IT_Figure1_Corrected/data/bi_phase_1/phase_1a_T=0.0/microsoft2fPhi-4-mini-instruct_a6577384.json"
+}

@@ -1,0 +1,24 @@
+{
+  "python": "3.11.18 (main, Oct 26 2026, 15:28:55) [GCC 13.3.0]",
+  "python_executable": "/opt/b3it-corrected-venv/bin/python",
+  "packages": {
+    "torch": "2.9.1",
+    "transformers": "4.57.6",
+    "vllm": "0.15.0",
+    "lightning": "2.6.1",
+    "peft": "0.18.1",
+    "datasets": "4.5.0",
+    "matplotlib": "3.10.8"
+  },
+  "torch_cuda": "12.8",
+  "gpu": "NVIDIA A40",
+  "compute_capability": [
+    8,
+    6
+  ],
+  "gpu_memory_gib": 44.423828125,
+  "native_bf16_calculation_passed": true,
+  "project_import": "/workspace/B3IT_Figure1_Corrected/authors_repo/track-llm-apis/src/track_llm_apis/__init__.py",
+  "model_inference_tested": false,
+  "lora_training_tested": false
+}

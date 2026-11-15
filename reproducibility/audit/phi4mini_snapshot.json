@@ -1,0 +1,15 @@
+{
+  "model": "microsoft/Phi-4-mini-instruct",
+  "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "snapshot": "/workspace/B3IT_Figure1_Corrected/cache/huggingface/hub/models--microsoft--Phi-4-mini-instruct/snapshots/cfbefacb99257ffa30c83adab238a50856ac3083",
+  "weight_files": {
+    "model-00001-of-00002.safetensors": 4903637712,
+    "model-00002-of-00002.safetensors": 2768428504
+  },
+  "checkpoint_tensor_count": 194,
+  "model_type": "phi3",
+  "architectures": [
+    "Phi3ForCausalLM"
+  ],
+  "tokenizer_class": "GPT2TokenizerFast"
+}

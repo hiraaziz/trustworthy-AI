@@ -1,0 +1,10 @@
+{
+  "model": "google/gemma-3-1b-it",
+  "revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "snapshot": "/workspace/B3IT_Figure1_Corrected/cache/huggingface/hub/models--google--gemma-3-1b-it/snapshots/dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "weight_files": {
+    "model.safetensors": 1999811208
+  },
+  "model_type": "gemma3_text",
+  "tokenizer_class": "GemmaTokenizerFast"
+}

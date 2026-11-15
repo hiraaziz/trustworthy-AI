@@ -1,0 +1,19 @@
+{
+  "model": "microsoft/Phi-4-mini-instruct",
+  "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+  "description": {
+    "type": "weight_pruning",
+    "method": "random",
+    "scale": 0.00390625
+  },
+  "seed": 0,
+  "rng_policy": "TinyChange initialized independently for each variant",
+  "base_device": "cpu",
+  "creation_device": "cuda:0",
+  "creation_dtype": "torch.bfloat16",
+  "base_hash": "0d8dc9066ea999d4",
+  "upstream_variant_hash": "2eeebc5ca406eb88",
+  "reloaded_hash": "6f24dfc9d02f9bb3",
+  "verified_checkpoint_tensors": 195,
+  "changed_bf16_parameter_values": 9437184
+}

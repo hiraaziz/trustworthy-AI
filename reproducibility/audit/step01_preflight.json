@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-11-14T09:12:26.584598+00:00",
+  "mount": {
+    "target": "/workspace",
+    "source": "mfs#eu-se-1.runpod.net:9421[/networkvolumes/flrv32qt7x]",
+    "fstype": "fuse"
+  },
+  "gpu_report": "0, NVIDIA A40, 46068 MiB, 45490 MiB, 595.91.07",
+  "ram_total_gib": 503.5135803222656,
+  "ram_available_gib": 405.07238006591797,
+  "disk": {
+    "/workspace": {
+      "total_gib": 716057.6774902344,
+      "free_gib": 256320.4053955078
+    },
+    "/": {
+      "total_gib": 50.0,
+      "free_gib": 49.984439849853516
+    }
+  },
+  "commit": "ad2f69295797a5f03e7b480246080d91087d9007",
+  "native_bf16_calculation_verified": false,
+  "training_memory_measured": false
+}

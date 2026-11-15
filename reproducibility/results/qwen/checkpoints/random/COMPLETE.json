@@ -1,0 +1,19 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "description": {
+    "type": "weight_pruning",
+    "method": "random",
+    "scale": 0.00390625
+  },
+  "seed": 0,
+  "rng_policy": "TinyChange initialized independently for each variant",
+  "base_device": "cpu",
+  "creation_device": "cuda:0",
+  "creation_dtype": "torch.bfloat16",
+  "base_hash": "f8bc25d7bec69e06",
+  "upstream_variant_hash": "4e260cb26053551d",
+  "reloaded_hash": "c75e8a76b7e783b8",
+  "verified_checkpoint_tensors": 291,
+  "changed_bf16_parameter_values": 1225728
+}

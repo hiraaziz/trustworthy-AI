@@ -1,0 +1,19 @@
+{
+  "model": "google/gemma-3-1b-it",
+  "revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "description": {
+    "type": "weight_pruning",
+    "method": "random",
+    "scale": 0.00390625
+  },
+  "seed": 0,
+  "rng_policy": "TinyChange initialized independently for each variant",
+  "base_device": "cpu",
+  "creation_device": "cuda:0",
+  "creation_dtype": "torch.bfloat16",
+  "base_hash": "6812e399b339f8d7",
+  "upstream_variant_hash": "276524512a591ca7",
+  "reloaded_hash": "428c9776e87068f9",
+  "verified_checkpoint_tensors": 341,
+  "changed_bf16_parameter_values": 2426112
+}

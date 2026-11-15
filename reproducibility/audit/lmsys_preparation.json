@@ -1,0 +1,17 @@
+{
+  "dataset": "lmsys/lmsys-chat-1m",
+  "revision": "200748d9d3cddcc9d782887541057aca0b18c5da",
+  "loader": "track_llm_apis.util.load_lmsys_chat_1m",
+  "filters": {
+    "gpt4_filter": true,
+    "redacted_filter": true,
+    "flagged_filter": true,
+    "first_turn_only": true
+  },
+  "full_dataset_processed": true,
+  "filtered_conversations": 4502,
+  "dataset_fingerprint": "3cd5574d57e1498f",
+  "datasets_dir": "/workspace/B3IT_Figure1_Corrected/data/datasets",
+  "training_subset_selected": false,
+  "token_length_filter_added": false
+}

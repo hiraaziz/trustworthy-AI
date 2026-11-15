@@ -1,0 +1,10 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "snapshot": "/workspace/B3IT_Figure1_Corrected/cache/huggingface/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775",
+  "weight_files": {
+    "model.safetensors": 988097824
+  },
+  "model_type": "qwen2",
+  "tokenizer_class": "Qwen2TokenizerFast"
+}

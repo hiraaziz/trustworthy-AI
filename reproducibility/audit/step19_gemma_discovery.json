@@ -1,0 +1,9 @@
+{
+  "model": "google/gemma-3-1b-it",
+  "revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+  "traffic_dataset_fingerprint": "3cd5574d57e1498f",
+  "candidates": 20000,
+  "candidate_observations": 60000,
+  "discovered_border_inputs": 867,
+  "upstream_result": "/workspace/B3IT_Figure1_Corrected/data/bi_phase_1/phase_1a_T=0.0/google2fgemma-3-1b-it_2b51cd9f.json"
+}

@@ -1,0 +1,37 @@
+{
+  "authors_commit": "ad2f69295797a5f03e7b480246080d91087d9007",
+  "models": {
+    "Qwen/Qwen2.5-0.5B-Instruct": {
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "model_type": "qwen2",
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "declared_dtype": "bfloat16",
+      "max_position_embeddings": 32768
+    },
+    "google/gemma-3-1b-it": {
+      "revision": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+      "model_type": "gemma3_text",
+      "architectures": [
+        "Gemma3ForCausalLM"
+      ],
+      "declared_dtype": "bfloat16",
+      "max_position_embeddings": 32768
+    },
+    "microsoft/Phi-4-mini-instruct": {
+      "revision": "cfbefacb99257ffa30c83adab238a50856ac3083",
+      "model_type": "phi3",
+      "architectures": [
+        "Phi3ForCausalLM"
+      ],
+      "declared_dtype": "bfloat16",
+      "max_position_embeddings": 131072
+    }
+  },
+  "dataset": {
+    "repo_id": "lmsys/lmsys-chat-1m",
+    "revision": "200748d9d3cddcc9d782887541057aca0b18c5da"
+  },
+  "revision_note": "Revisions resolved for this reproduction. The pinned authors' code does not specify historical Hub revisions."
+}
