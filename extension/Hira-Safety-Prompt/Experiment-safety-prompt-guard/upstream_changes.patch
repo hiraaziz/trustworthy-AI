@@ -1,0 +1,48 @@
+diff --git a/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py b/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py
+index dd7c904..4e5f1d8 100644
+--- a/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py
++++ b/track-llm-apis/src/track_llm_apis/sampling/analyze_param_sweeps.py
+@@ -21,9 +21,6 @@ from track_llm_apis.sampling.analyze_bi import (
+     build_shared_vocabs,
+ )
+ from track_llm_apis.sampling.analyze_gao2025 import gao2025_two_sample_test
+-from track_llm_apis.sampling.analyze_logprobs import (
+-    logprob_two_sample_test_from_compressed_output_row,
+-)
+ from track_llm_apis.sampling.analyze_mmlu import mmlu_two_sample_test
+ from track_llm_apis.sampling.common import (
+     CompressedOutput,
+@@ -1413,6 +1410,7 @@ class LTParameterSweep(BaseParameterSweep[LTParamSweepResult, LTParamSweepPlotDa
+         n_tests: int,
+     ):
+         """Saves per-variant-per-param files to analysis/lt/."""
++        from track_llm_apis.sampling.analyze_logprobs import logprob_two_sample_test_from_compressed_output_row
+         source = DataSource.LT
+         sd = prepare_sweep_data(directory, data, source)
+ 
+diff --git a/track-llm-apis/src/track_llm_apis/sampling/common.py b/track-llm-apis/src/track_llm_apis/sampling/common.py
+index 2a5f1f1..40665ac 100644
+--- a/track-llm-apis/src/track_llm_apis/sampling/common.py
++++ b/track-llm-apis/src/track_llm_apis/sampling/common.py
+@@ -564,7 +564,7 @@ def get_method_dir_name(source: DataSource) -> str:
+     }[source]
+ 
+ 
+-def get_variant_filename(variant: str, params: dict[str, int | float] | None = None) -> str:
++def _get_variant_filename_before_escaping(variant: str, params: dict[str, int | float] | None = None) -> str:
+     """Generate a filename for a variant (and optional params) analysis result.
+ 
+     Args:
+@@ -582,6 +582,12 @@ def get_variant_filename(variant: str, params: dict[str, int | float] | None = N
+     return f"{variant_slug}.json"
+ 
+ 
++def get_variant_filename(variant: str, params: dict[str, int | float] | None = None) -> str:
++    filename = _get_variant_filename_before_escaping(variant, params)
++    return filename.replace("%", "%25").replace("/", "%2F")
++
++
++
+ def get_analysis_dir(sampling_dir: Path, source: DataSource) -> Path:
+     """Get the analysis directory for a specific method."""
+     return sampling_dir / "analysis" / get_method_dir_name(source)
