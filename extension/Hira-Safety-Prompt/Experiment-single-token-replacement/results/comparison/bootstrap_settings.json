@@ -1,0 +1,6 @@
+{
+  "replicates": 1000,
+  "seed": 2026,
+  "interval": "95% percentile",
+  "scope": "resampling saved scores, conditional on collected data"
+}

@@ -1,0 +1,5 @@
+variant,replacement,tokens_replaced,roc_auc
+A,polite,1,0.9975172499999999
+B,respectful,1,0.99440625
+C,careful,1,0.9937440000000001
+D,safe,1,0.99298325

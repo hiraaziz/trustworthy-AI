@@ -1,0 +1,31 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "dtype": "bfloat16",
+  "gpu": "NVIDIA A40",
+  "prompt": "x",
+  "conditions": {
+    "original": "You are a helpful assistant.",
+    "A": "You are a polite assistant.",
+    "B": "You are a respectful assistant.",
+    "C": "You are a careful assistant.",
+    "D": "You are a safe assistant."
+  },
+  "variant_mapping": {
+    "original": "{\"type\":\"unchanged\"}",
+    "A": "{\"type\": \"system_prompt\", \"label\": \"A\", \"replacement\": \"polite\", \"tokens_replaced\": 1}",
+    "B": "{\"type\": \"system_prompt\", \"label\": \"B\", \"replacement\": \"respectful\", \"tokens_replaced\": 1}",
+    "C": "{\"type\": \"system_prompt\", \"label\": \"C\", \"replacement\": \"careful\", \"tokens_replaced\": 1}",
+    "D": "{\"type\": \"system_prompt\", \"label\": \"D\", \"replacement\": \"safe\", \"tokens_replaced\": 1}"
+  },
+  "observations_per_condition": 5000,
+  "block_size": 100,
+  "batch_size": 64,
+  "topk": 20,
+  "temperature": 0.0,
+  "max_output_tokens": 1,
+  "reference_samples_per_prompt": 50,
+  "seed_base": 700000,
+  "prefix_caching": false,
+  "enforce_eager": true
+}

@@ -1,0 +1,6 @@
+PyTorch: 2.9.1+cu128
+Transformers: 4.57.6
+vLLM: 0.15.0
+GPU: NVIDIA A40
+BF16 calculation passed
+RESUME CHECK COMPLETE

@@ -1,0 +1,11 @@
+{
+  "gpu": "NVIDIA A40",
+  "system_prompt": "You are a helpful assistant.",
+  "prompt": "x",
+  "observations": 60,
+  "topk_requested": 20,
+  "prompt_token_ids_verified": true,
+  "saved_logprobs_match_vllm": true,
+  "reload_verified": true,
+  "original_vs_original_statistic": 0.008641773834824562
+}

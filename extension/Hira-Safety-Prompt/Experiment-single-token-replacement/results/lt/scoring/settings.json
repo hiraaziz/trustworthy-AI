@@ -1,0 +1,11 @@
+{
+  "reference_observations": 50,
+  "detection_observations": 10,
+  "n_tests": 1000,
+  "seed": 42,
+  "prompt": "x",
+  "topk": 20,
+  "gpu_used_for_collection": "NVIDIA A40",
+  "h0": "original/original and edited/edited, pooled by repository scorer",
+  "h1": "original reference versus edited detection"
+}

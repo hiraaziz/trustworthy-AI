@@ -1,0 +1,158 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "baseline_system_prompt": "You are a helpful assistant.",
+  "baseline_token_ids": [
+    151644,
+    8948,
+    198,
+    2610,
+    525,
+    264,
+    10950,
+    17847,
+    13,
+    151645,
+    198,
+    151644,
+    872,
+    198,
+    9707,
+    151645,
+    198,
+    151644,
+    77091,
+    198
+  ],
+  "verification_user_message": "Hello",
+  "variants": [
+    {
+      "label": "A",
+      "replacement_word": "polite",
+      "system_prompt": "You are a polite assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        47787,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    },
+    {
+      "label": "B",
+      "replacement_word": "respectful",
+      "system_prompt": "You are a respectful assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        48050,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    },
+    {
+      "label": "C",
+      "replacement_word": "careful",
+      "system_prompt": "You are a careful assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        16585,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    },
+    {
+      "label": "D",
+      "replacement_word": "safe",
+      "system_prompt": "You are a safe assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        6092,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    }
+  ]
+}

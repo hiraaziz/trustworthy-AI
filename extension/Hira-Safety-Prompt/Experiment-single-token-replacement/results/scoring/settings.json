@@ -1,0 +1,16 @@
+{
+  "n_prompts": 5,
+  "detection_samples_per_prompt": 3,
+  "reference_samples_per_prompt": 50,
+  "n_tests": 1000,
+  "seed": 42,
+  "h0": "original/original and edited/edited, pooled by repository scorer",
+  "h1": "original reference versus edited detection",
+  "condition_mapping": {
+    "original": "{\"type\":\"unchanged\"}",
+    "A": "{\"type\": \"system_prompt\", \"label\": \"A\", \"replacement\": \"polite\", \"tokens_replaced\": 1}",
+    "B": "{\"type\": \"system_prompt\", \"label\": \"B\", \"replacement\": \"respectful\", \"tokens_replaced\": 1}",
+    "C": "{\"type\": \"system_prompt\", \"label\": \"C\", \"replacement\": \"careful\", \"tokens_replaced\": 1}",
+    "D": "{\"type\": \"system_prompt\", \"label\": \"D\", \"replacement\": \"safe\", \"tokens_replaced\": 1}"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "python": "/workspace/B3IT_Token_Edits_Fresh/.venv/bin/python",
+  "uv_python": "/usr/local/bin/python",
+  "uv_package": "/workspace/B3IT_Token_Edits_Fresh/tools/uv_package",
+  "python_install_dir": "/workspace/B3IT_Token_Edits_Fresh/tools/python",
+  "uv_cache_dir": "/workspace/B3IT_Token_Edits_Fresh/tools/uv_cache"
+}

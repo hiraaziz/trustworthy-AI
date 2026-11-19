@@ -1,0 +1,162 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "baseline_system_prompt": "You are a helpful assistant.",
+  "variants": [
+    {
+      "label": "A",
+      "replacement_word": "polite",
+      "system_prompt": "You are a polite assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        47787,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    },
+    {
+      "label": "B",
+      "replacement_word": "respectful",
+      "system_prompt": "You are a respectful assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        48050,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    },
+    {
+      "label": "C",
+      "replacement_word": "careful",
+      "system_prompt": "You are a careful assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        16585,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    },
+    {
+      "label": "D",
+      "replacement_word": "safe",
+      "system_prompt": "You are a safe assistant.",
+      "token_ids": [
+        151644,
+        8948,
+        198,
+        2610,
+        525,
+        264,
+        6092,
+        17847,
+        13,
+        151645,
+        198,
+        151644,
+        872,
+        198,
+        9707,
+        151645,
+        198,
+        151644,
+        77091,
+        198
+      ],
+      "same_length": true,
+      "changed_positions": [
+        6
+      ],
+      "eligible": true
+    }
+  ],
+  "dtype": "bfloat16",
+  "repository_bi_settings": {
+    "temperature": 0.0,
+    "per_batch_input_fraction": 0.95,
+    "batch_size": 64,
+    "phase_1_queries_per_token": 3,
+    "phase_1_tokens_per_endpoint": 20000,
+    "phase_1_target_border_inputs": 20000,
+    "phase_1_queries_per_bi": 1000,
+    "phase_1b_min_bis": 10,
+    "max_border_inputs": 120,
+    "n_prompts": 10,
+    "reference_samples_per_prompt": 50,
+    "detection_samples_per_prompt": 10,
+    "models": {
+      "Qwen/Qwen2.5-0.5B-Instruct": 1,
+      "Qwen/Qwen2.5-7B-Instruct": 1,
+      "google/gemma-3-1b-it": 1,
+      "google/gemma-2-9b-it": 1,
+      "microsoft/Phi-4-mini-instruct": 1,
+      "mistralai/Mistral-7B-Instruct-v0.3": 1,
+      "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B": 1,
+      "meta-llama/Llama-3.1-8B-Instruct": 1,
+      "allenai/OLMo-2-1124-7B-Instruct": 2
+    }
+  },
+  "adaptation": "Apply chat formatting and replace one system-prompt token."
+}

@@ -1,0 +1,7 @@
+{
+  "replicates": 1000,
+  "seed": 2026,
+  "interval": "95% percentile",
+  "resampling": "within each saved H0 group and H1",
+  "scope": "conditional on collected observations and selected probes"
+}

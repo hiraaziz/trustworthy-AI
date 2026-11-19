@@ -1,0 +1,7 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "baseline_system_prompt": "You are a helpful assistant.",
+  "candidates_screened": 20000,
+  "border_inputs_found": 416,
+  "generation_seconds": 76.22809932380915
+}

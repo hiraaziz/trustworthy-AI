@@ -1,0 +1,7 @@
+{
+  "original": "{\"type\":\"unchanged\"}",
+  "A": "{\"type\": \"system_prompt\", \"label\": \"A\", \"replacement\": \"polite\", \"tokens_replaced\": 1}",
+  "B": "{\"type\": \"system_prompt\", \"label\": \"B\", \"replacement\": \"respectful\", \"tokens_replaced\": 1}",
+  "C": "{\"type\": \"system_prompt\", \"label\": \"C\", \"replacement\": \"careful\", \"tokens_replaced\": 1}",
+  "D": "{\"type\": \"system_prompt\", \"label\": \"D\", \"replacement\": \"safe\", \"tokens_replaced\": 1}"
+}

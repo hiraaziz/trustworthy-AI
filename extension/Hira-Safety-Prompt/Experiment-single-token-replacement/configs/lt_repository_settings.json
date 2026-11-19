@@ -1,0 +1,7 @@
+{
+  "batch_size": 64,
+  "topk": 20,
+  "temperature": 0.0,
+  "reference_samples_per_prompt": 50,
+  "default_prompt": "x"
+}
