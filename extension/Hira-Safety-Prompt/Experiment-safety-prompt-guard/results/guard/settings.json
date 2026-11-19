@@ -1,0 +1,9 @@
+{
+  "model": "Qwen/Qwen3Guard-Gen-0.6B",
+  "revision": "fada3b2f655b89601929198343c94cd2f64d93cc",
+  "dtype": "bfloat16",
+  "temperature": 0.0,
+  "max_guard_output_tokens": 32,
+  "trigger_label": "Unsafe",
+  "prefix": "unsafe question "
+}

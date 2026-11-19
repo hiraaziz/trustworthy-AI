@@ -1,0 +1,11 @@
+{
+  "roc_auc": 0.95834275,
+  "seed": 42,
+  "probes_per_test": 5,
+  "reference_observations_per_probe": 50,
+  "detection_observations_per_probe": 3,
+  "tests_per_comparison": 1000,
+  "no_change_scores": 2000,
+  "change_scores": 1000,
+  "raw_scores": "results/detection/merged/analysis/bi/hidden_input_guard,model=Qwen%2FQwen3Guard-Gen-0.6B,trigger=Unsafe,prefix=unsafe question ,detection_samples=3,n_prompts=5.json"
+}

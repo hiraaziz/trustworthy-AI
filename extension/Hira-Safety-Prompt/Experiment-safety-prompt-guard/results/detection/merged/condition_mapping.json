@@ -1,0 +1,4 @@
+{
+  "original": "{\"type\":\"unchanged\"}",
+  "guard_on": "{\"type\": \"hidden_input_guard\", \"model\": \"Qwen/Qwen3Guard-Gen-0.6B\", \"trigger\": \"Unsafe\", \"prefix\": \"unsafe question \"}"
+}
