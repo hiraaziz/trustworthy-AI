@@ -1,0 +1,73 @@
+{
+  "sources": [
+    {
+      "name": "B3IT_Qwen05_Noise_Pruning (2).ipynb",
+      "sha256": "a51bcc8839fae3a0747c828853b6bd45946e28f76be4a18b99a743e894c21399"
+    },
+    {
+      "name": "B3IT_Phi4mini_Noise_Pruning (1).ipynb",
+      "sha256": "c190346f2e9f93f24eb77720ee8ee2fe97a8775a47d5d8bc6ef661f50ac4f220"
+    },
+    {
+      "name": "B3IT_Report_Tables (3).ipynb",
+      "sha256": "4ef45d310e9eda6383cfe7749d9a0c3bf8820c2ef651db71571ae2843e0e0579"
+    }
+  ],
+  "notebooks": [
+    {
+      "file": "history/qwen_working_history.ipynb",
+      "source": "B3IT_Qwen05_Noise_Pruning (2).ipynb"
+    },
+    {
+      "file": "history/phi_working_history.ipynb",
+      "source": "B3IT_Phi4mini_Noise_Pruning (1).ipynb"
+    },
+    {
+      "file": "notebooks/01_main_results_and_subset_ranks.ipynb",
+      "source": {
+        "notebook": "B3IT_Report_Tables (3).ipynb",
+        "original_cells": [
+          14,
+          4
+        ]
+      }
+    },
+    {
+      "file": "notebooks/02_single_family_transfer.ipynb",
+      "source": {
+        "notebook": "B3IT_Report_Tables (3).ipynb",
+        "original_cells": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15
+        ]
+      }
+    },
+    {
+      "file": "notebooks/03_output_count_sensitivity.ipynb",
+      "source": {
+        "notebook": "B3IT_Report_Tables (3).ipynb",
+        "original_cells": [
+          17,
+          18,
+          19,
+          20
+        ]
+      }
+    }
+  ],
+  "changes": [
+    "Removed all cell outputs and execution counts",
+    "Removed transient notebook metadata",
+    "Split supplementary analyses into ordered entry points",
+    "Removed manual numerical table and schema previews from analysis entry points",
+    "Centralized analysis data root",
+    "Preserved historical collection code separately"
+  ],
+  "validation": "Static validation only; external Drive data not supplied"
+}
