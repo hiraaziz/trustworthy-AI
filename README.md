@@ -1,10 +1,16 @@
-# B3IT reproduction and extensions
+# B3IT Reproduction and Extensions
 
-This repository contains a scaled reproduction of B3IT and project extensions.
+This repository contains reproduction studies and extensions of B3IT, a black-box method for detecting changes in language models through sampled outputs.
 
-- `reproducibility/Figure1/` contains the three-model Figure 1 reproduction.
-- `reproducibility/Figure2-3-Scaled-Comparison/` contains code and a Kaggle notebook for the Figure 2 baseline comparison and Figure 3 LoRA fine-tuning reproduction contributed by Yousef.
-- `extension/Hira-Safety-Prompt/` and `extension/Farah-Border-Input-Selection/` contain the existing project extensions.
-- `extension/Youssef-Safety-Behavior/` contains Yousef's system-prompt and safety-LoRA experiments, notebooks, scripts, and reviewed aggregate outcomes.
+## Reproduction studies
 
-Each experiment folder documents its setup, interpretation, and limits. Generated result images for Yousef's experiments, model weights, and raw question-response records are not committed.
+- `reproducibility/Figure1/` reproduces the cost–accuracy experiment across three models.
+- `reproducibility/Figure2-3-Scaled-Comparison/` provides source code and a Kaggle notebook for baseline comparisons and LoRA fine-tuning experiments.
+
+## Extensions
+
+- `extension/Hira-Safety-Prompt/` studies safety-prompt and guard interventions.
+- `extension/Farah-Border-Input-Selection/` studies border-input selection, ranking, and transfer.
+- `extension/Youssef-Safety-Behavior/` evaluates safety system-prompt and safety-LoRA interventions.
+
+The experiment directories describe their methods, run instructions, and limitations. Some notebooks generate plots and other artifacts when run. Model weights and raw question–response records are not included.
