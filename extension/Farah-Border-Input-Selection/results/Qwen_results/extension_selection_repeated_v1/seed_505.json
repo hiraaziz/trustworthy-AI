@@ -1,0 +1,5635 @@
+{
+  "seed": 505,
+  "protocol": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "candidate_prompts": [
+      " AG",
+      "_STRUCTURE",
+      "forward",
+      "_act",
+      ".SEVERE",
+      "an",
+      " conect",
+      " compete",
+      ".Set",
+      " SPECIAL"
+    ],
+    "selection_pool_size": 500,
+    "evaluation_pool_size": 500,
+    "selected_prompts": 3,
+    "detection_samples_per_prompt": 10,
+    "reference_samples_per_prompt": 50,
+    "simulation_tests": 1000,
+    "detection_requests_per_test": 30,
+    "strategies": [
+      "performance_based",
+      "entropy_based",
+      "uniform_random_subset"
+    ],
+    "selection_aggregation": "Mean prompt AUC within each selection perturbation type, then equal average across selection types",
+    "evaluation_aggregation": "Mean group AUC across variants within each held-out type",
+    "held_out_splits": {
+      "magnitude": {
+        "selection": [
+          "noise_2pow_minus0",
+          "noise_2pow_minus10",
+          "noise_2pow_minus15",
+          "noise_2pow_minus20",
+          "noise_2pow_minus25",
+          "noise_2pow_minus30",
+          "noise_2pow_minus5",
+          "random_pruning_2pow_minus0",
+          "random_pruning_2pow_minus10",
+          "random_pruning_2pow_minus15",
+          "random_pruning_2pow_minus20",
+          "random_pruning_2pow_minus5"
+        ],
+        "evaluation": [
+          "magnitude_2pow_minus0",
+          "magnitude_2pow_minus10",
+          "magnitude_2pow_minus15",
+          "magnitude_2pow_minus20",
+          "magnitude_2pow_minus5"
+        ]
+      },
+      "random": {
+        "selection": [
+          "magnitude_2pow_minus0",
+          "magnitude_2pow_minus10",
+          "magnitude_2pow_minus15",
+          "magnitude_2pow_minus20",
+          "magnitude_2pow_minus5",
+          "noise_2pow_minus0",
+          "noise_2pow_minus10",
+          "noise_2pow_minus15",
+          "noise_2pow_minus20",
+          "noise_2pow_minus25",
+          "noise_2pow_minus30",
+          "noise_2pow_minus5"
+        ],
+        "evaluation": [
+          "random_pruning_2pow_minus0",
+          "random_pruning_2pow_minus10",
+          "random_pruning_2pow_minus15",
+          "random_pruning_2pow_minus20",
+          "random_pruning_2pow_minus5"
+        ]
+      },
+      "random_noise": {
+        "selection": [
+          "magnitude_2pow_minus0",
+          "magnitude_2pow_minus10",
+          "magnitude_2pow_minus15",
+          "magnitude_2pow_minus20",
+          "magnitude_2pow_minus5",
+          "random_pruning_2pow_minus0",
+          "random_pruning_2pow_minus10",
+          "random_pruning_2pow_minus15",
+          "random_pruning_2pow_minus20",
+          "random_pruning_2pow_minus5"
+        ],
+        "evaluation": [
+          "noise_2pow_minus0",
+          "noise_2pow_minus10",
+          "noise_2pow_minus15",
+          "noise_2pow_minus20",
+          "noise_2pow_minus25",
+          "noise_2pow_minus30",
+          "noise_2pow_minus5"
+        ]
+      }
+    },
+    "primary_metric": "Held-out ROC AUC per perturbation type",
+    "comparisons": [
+      "Performance AUC minus entropy AUC",
+      "Performance AUC minus mean random-subset AUC"
+    ],
+    "repeat_summary": [
+      "Mean and standard deviation across seeds",
+      "Minimum and maximum paired AUC differences",
+      "Number of seeds with a positive paired difference"
+    ],
+    "cost_scope": "Equal detection requests only. Discovery, selection and reference collection costs are excluded.",
+    "limitations": [
+      "Ten previously collected candidate Border Inputs",
+      "Repeated splits of existing outputs, not new inference runs",
+      "Entropy baseline not yet verified against repository ranking",
+      "Five repetitions do not establish statistical significance"
+    ]
+  },
+  "selections": {
+    "magnitude": {
+      "performance_prompts": [
+        "an",
+        " conect",
+        " compete"
+      ],
+      "entropy_prompts": [
+        "an",
+        " compete",
+        ".Set"
+      ],
+      "ranking_scores": {
+        " AG": 0.7982463857142856,
+        "_STRUCTURE": 0.8192661642857142,
+        "forward": 0.8028012571428571,
+        "_act": 0.7949894285714285,
+        ".SEVERE": 0.7704795857142857,
+        "an": 0.8999819642857143,
+        " conect": 0.9261750500000001,
+        " compete": 0.8851504857142856,
+        ".Set": 0.8053960571428571,
+        " SPECIAL": 0.8766892428571429
+      }
+    },
+    "random": {
+      "performance_prompts": [
+        " conect",
+        " compete",
+        " SPECIAL"
+      ],
+      "entropy_prompts": [
+        "an",
+        " compete",
+        ".Set"
+      ],
+      "ranking_scores": {
+        " AG": 0.7463189214285714,
+        "_STRUCTURE": 0.7635684071428572,
+        "forward": 0.7044861499999999,
+        "_act": 0.7103378428571429,
+        ".SEVERE": 0.6879843428571428,
+        "an": 0.7807087428571428,
+        " conect": 0.8384604642857143,
+        " compete": 0.7957091285714286,
+        ".Set": 0.7450673714285714,
+        " SPECIAL": 0.7818051357142858
+      }
+    },
+    "random_noise": {
+      "performance_prompts": [
+        "an",
+        " conect",
+        " compete"
+      ],
+      "entropy_prompts": [
+        "an",
+        " compete",
+        ".Set"
+      ],
+      "ranking_scores": {
+        " AG": 0.7604667,
+        "_STRUCTURE": 0.77553575,
+        "forward": 0.7780547499999999,
+        "_act": 0.73303075,
+        ".SEVERE": 0.7121483499999999,
+        "an": 0.8171244,
+        " conect": 0.86484355,
+        " compete": 0.82464095,
+        ".Set": 0.7599640000000001,
+        " SPECIAL": 0.7982328000000001
+      }
+    }
+  },
+  "summary": [
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "performance_auc": 0.7524903,
+      "entropy_auc": 0.711271,
+      "random_mean_auc": 0.7342103016666667,
+      "random_subset_sd": 0.02663801782314136,
+      "gain_vs_entropy": 0.04121929999999996,
+      "gain_vs_random": 0.01827999833333327
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "performance_auc": 0.953828,
+      "entropy_auc": 0.9493577999999999,
+      "random_mean_auc": 0.9225687883333333,
+      "random_subset_sd": 0.031237697176366305,
+      "gain_vs_entropy": 0.004470200000000091,
+      "gain_vs_random": 0.031259211666666675
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "performance_auc": 0.9052515714285715,
+      "entropy_auc": 0.8820403571428572,
+      "random_mean_auc": 0.8577925952380951,
+      "random_subset_sd": 0.030338229264500357,
+      "gain_vs_entropy": 0.023211214285714266,
+      "gain_vs_random": 0.04745897619047634
+    }
+  ],
+  "subset_results": [
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "forward"
+      ],
+      "auc": 0.7660691
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "_act"
+      ],
+      "auc": 0.7127512000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        ".SEVERE"
+      ],
+      "auc": 0.7141668000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "an"
+      ],
+      "auc": 0.7148197
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " conect"
+      ],
+      "auc": 0.7539920999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " compete"
+      ],
+      "auc": 0.7200538
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        ".Set"
+      ],
+      "auc": 0.7123636
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " SPECIAL"
+      ],
+      "auc": 0.710776
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        "_act"
+      ],
+      "auc": 0.7649081
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        ".SEVERE"
+      ],
+      "auc": 0.7664252
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        "an"
+      ],
+      "auc": 0.7620963999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " conect"
+      ],
+      "auc": 0.786887
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " compete"
+      ],
+      "auc": 0.7666349
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        ".Set"
+      ],
+      "auc": 0.7582322
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " SPECIAL"
+      ],
+      "auc": 0.7603546
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.7074121
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        "an"
+      ],
+      "auc": 0.7080232000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.7502663
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.7137761000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.7048273
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.7044137
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        5
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.7087247
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        6
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.7527929999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        7
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.7146513
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        8
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.7065186000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        9
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.704328
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " conect"
+      ],
+      "auc": 0.7480093
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " compete"
+      ],
+      "auc": 0.716315
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.7079121
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.7057677
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        6,
+        7
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.7537627
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        6,
+        8
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.7452938
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        6,
+        9
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.7459626
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        7,
+        8
+      ],
+      "prompts": [
+        " AG",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.7128783
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        7,
+        9
+      ],
+      "prompts": [
+        " AG",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7118059
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        8,
+        9
+      ],
+      "prompts": [
+        " AG",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.7037165
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        "_act"
+      ],
+      "auc": 0.7619535000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        4
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        ".SEVERE"
+      ],
+      "auc": 0.7642947
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        "an"
+      ],
+      "auc": 0.7623788
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " conect"
+      ],
+      "auc": 0.7858778
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " compete"
+      ],
+      "auc": 0.7650779999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        ".Set"
+      ],
+      "auc": 0.7567098999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " SPECIAL"
+      ],
+      "auc": 0.7587336
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        4
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.7078061
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        "an"
+      ],
+      "auc": 0.709547
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.7519939999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.7146841
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.7059043
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.7044724
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.7110949
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.7558492
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.7169092
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.7076003
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.7055161
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " conect"
+      ],
+      "auc": 0.7503257999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " compete"
+      ],
+      "auc": 0.7186443
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.7090379
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.7071649
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        6,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.7569222
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        6,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.7487285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        6,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.7468600999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        7,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.7148015
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        7,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7132581
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        8,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.7053503
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        4
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.7078681
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        5
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        "an"
+      ],
+      "auc": 0.7553766000000002
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        6
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.7832833
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        7
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.7643523
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        8
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.7497499
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        9
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.7584718
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        5
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.7564633000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        6
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.7867906
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        7
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.7649979
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        8
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.7507158
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        9
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.7572445
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        6
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " conect"
+      ],
+      "auc": 0.7816915999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        7
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " compete"
+      ],
+      "auc": 0.7642618
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        8
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.7541704
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        9
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.7559458
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        6,
+        7
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.7862696
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        6,
+        8
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.7779164
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        6,
+        9
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.7804066000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        7,
+        8
+      ],
+      "prompts": [
+        "forward",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.7576845999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        7,
+        9
+      ],
+      "prompts": [
+        "forward",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7609786
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        8,
+        9
+      ],
+      "prompts": [
+        "forward",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.7518807000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        5
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.6987362999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        6
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.7506818
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        7
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.7094281
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        8
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.6959704
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        9
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.697656
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        6
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " conect"
+      ],
+      "auc": 0.744838
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        7
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " compete"
+      ],
+      "auc": 0.7123002
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        8
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.7010342
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        9
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.6994244000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        6,
+        7
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.7520308
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        6,
+        8
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.7427488
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        6,
+        9
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.7436809
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        7,
+        8
+      ],
+      "prompts": [
+        "_act",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.7070782000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        7,
+        9
+      ],
+      "prompts": [
+        "_act",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7061381
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        8,
+        9
+      ],
+      "prompts": [
+        "_act",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.6978011000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        6
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " conect"
+      ],
+      "auc": 0.7495417
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        7
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " compete"
+      ],
+      "auc": 0.7132874
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.7023175
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.7004127
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        6,
+        7
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.7543414
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        6,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.7459551
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        6,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.7454784
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        7,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.708289
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        7,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7072184000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        8,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.6988112
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        6,
+        7
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.7524903
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        6,
+        8
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.7425631
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        6,
+        9
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.741457
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        7,
+        8
+      ],
+      "prompts": [
+        "an",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.711271
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        7,
+        9
+      ],
+      "prompts": [
+        "an",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7093078
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        8,
+        9
+      ],
+      "prompts": [
+        "an",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.7011343
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        6,
+        7,
+        8
+      ],
+      "prompts": [
+        " conect",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.7465749
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        6,
+        7,
+        9
+      ],
+      "prompts": [
+        " conect",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.7485322999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        6,
+        8,
+        9
+      ],
+      "prompts": [
+        " conect",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.7395187
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        7,
+        8,
+        9
+      ],
+      "prompts": [
+        " compete",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.7054800999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "forward"
+      ],
+      "auc": 0.8798798999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "_act"
+      ],
+      "auc": 0.8399371
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        ".SEVERE"
+      ],
+      "auc": 0.8644356999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "an"
+      ],
+      "auc": 0.9223095000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " conect"
+      ],
+      "auc": 0.9076549999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " compete"
+      ],
+      "auc": 0.9072414999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        ".Set"
+      ],
+      "auc": 0.8413326
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " SPECIAL"
+      ],
+      "auc": 0.9006424000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        "_act"
+      ],
+      "auc": 0.8743618
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        ".SEVERE"
+      ],
+      "auc": 0.9018607999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        "an"
+      ],
+      "auc": 0.9379192
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " conect"
+      ],
+      "auc": 0.9325625000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " compete"
+      ],
+      "auc": 0.9180096000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        ".Set"
+      ],
+      "auc": 0.8703887
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " SPECIAL"
+      ],
+      "auc": 0.9001594
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.8536930999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        "an"
+      ],
+      "auc": 0.9208835000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.9045137000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.9065650999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.8284388
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.8979134
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        5
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.9381419000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        6
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.9238236000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        7
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.9264340999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        8
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.8513588000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        9
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.9211945
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " conect"
+      ],
+      "auc": 0.9577226999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " compete"
+      ],
+      "auc": 0.9501128
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.9135864
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.9412943
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        6,
+        7
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9465781
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        6,
+        8
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8970822
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        6,
+        9
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9381633
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        7,
+        8
+      ],
+      "prompts": [
+        " AG",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8999473
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        7,
+        9
+      ],
+      "prompts": [
+        " AG",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9221857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        8,
+        9
+      ],
+      "prompts": [
+        " AG",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8941531999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        "_act"
+      ],
+      "auc": 0.8840989
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        4
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        ".SEVERE"
+      ],
+      "auc": 0.9125677
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        "an"
+      ],
+      "auc": 0.9413779
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " conect"
+      ],
+      "auc": 0.9385095
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " compete"
+      ],
+      "auc": 0.9218005999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        ".Set"
+      ],
+      "auc": 0.8815457999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " SPECIAL"
+      ],
+      "auc": 0.9044338
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        4
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.8716331
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        "an"
+      ],
+      "auc": 0.9272579000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.9155667999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.9130891999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.8466079000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.9029936
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.9453422
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.9352799999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.9333437
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.8696948000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.9272496
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " conect"
+      ],
+      "auc": 0.9613967999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " compete"
+      ],
+      "auc": 0.9523562
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.9216992000000002
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.9436902
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        6,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9507757
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        6,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.9095787999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        6,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9418749
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        7,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.9078744000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        7,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9250432999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        8,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.9015157
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        4
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.9120602
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        5
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        "an"
+      ],
+      "auc": 0.9425335
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        6
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.9416481000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        7
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.9221204999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        8
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.8753582999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        9
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.9022251000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        5
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.9603816999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        6
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.9606292
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        7
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.9441465999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        8
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.9026907
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        9
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.9299600000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        6
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " conect"
+      ],
+      "auc": 0.9701603999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        7
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " compete"
+      ],
+      "auc": 0.9567992000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        8
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.9357144999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        9
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.9450013
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        6,
+        7
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9569267
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        6,
+        8
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.9318256
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        6,
+        9
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9444734
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        7,
+        8
+      ],
+      "prompts": [
+        "forward",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.9176152999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        7,
+        9
+      ],
+      "prompts": [
+        "forward",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9226926000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        8,
+        9
+      ],
+      "prompts": [
+        "forward",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8996718999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        5
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.9465207
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        6
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.9362242999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        7
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.9355893
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        8
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.8610931000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        9
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.9266926999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        6
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " conect"
+      ],
+      "auc": 0.9632100999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        7
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " compete"
+      ],
+      "auc": 0.9551109999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        8
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.9201324
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        9
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.9446190999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        6,
+        7
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9529860000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        6,
+        8
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.9073587
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        6,
+        9
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9439178
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        7,
+        8
+      ],
+      "prompts": [
+        "_act",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.9070925000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        7,
+        9
+      ],
+      "prompts": [
+        "_act",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9252879
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        8,
+        9
+      ],
+      "prompts": [
+        "_act",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8979560000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        6
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " conect"
+      ],
+      "auc": 0.9741544
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        7
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " compete"
+      ],
+      "auc": 0.9679181
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.9369252000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.9602980999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        6,
+        7
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9676927
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        6,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.9247453
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        6,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9610770000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        7,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.9266290999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        7,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9442889000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        8,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.9211153
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        6,
+        7
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9745375
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        6,
+        8
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.9567338
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        6,
+        9
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9683451
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        7,
+        8
+      ],
+      "prompts": [
+        "an",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.9493577999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        7,
+        9
+      ],
+      "prompts": [
+        "an",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9549629
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        8,
+        9
+      ],
+      "prompts": [
+        "an",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.9397822
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        6,
+        7,
+        8
+      ],
+      "prompts": [
+        " conect",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.9462851000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        6,
+        7,
+        9
+      ],
+      "prompts": [
+        " conect",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.953828
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        6,
+        8,
+        9
+      ],
+      "prompts": [
+        " conect",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.9382202
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        7,
+        8,
+        9
+      ],
+      "prompts": [
+        " compete",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.9222511000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "forward"
+      ],
+      "auc": 0.8143639285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "_act"
+      ],
+      "auc": 0.8249910714285713
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        ".SEVERE"
+      ],
+      "auc": 0.8165979285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        "an"
+      ],
+      "auc": 0.8648537857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " conect"
+      ],
+      "auc": 0.8654563571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " compete"
+      ],
+      "auc": 0.8567842142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        ".Set"
+      ],
+      "auc": 0.8165831428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "_STRUCTURE",
+        " SPECIAL"
+      ],
+      "auc": 0.860059
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        "_act"
+      ],
+      "auc": 0.7914857142857141
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        ".SEVERE"
+      ],
+      "auc": 0.7802416428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        "an"
+      ],
+      "auc": 0.8526508571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " conect"
+      ],
+      "auc": 0.8538479285714287
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " compete"
+      ],
+      "auc": 0.8504343571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        ".Set"
+      ],
+      "auc": 0.79026
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "forward",
+        " SPECIAL"
+      ],
+      "auc": 0.8429697857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        4
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.7971760000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        5
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        "an"
+      ],
+      "auc": 0.8584093571428573
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.8572492857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.8597871428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.8016442857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.8488745000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        5
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.8545247857142856
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        6
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.8541504285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        7
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.8504197142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        8
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.795344
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        9
+      ],
+      "prompts": [
+        " AG",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.8444152857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        6
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " conect"
+      ],
+      "auc": 0.8870968571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        7
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " compete"
+      ],
+      "auc": 0.8818982142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        8
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.8505735000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        9
+      ],
+      "prompts": [
+        " AG",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.882933357142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        6,
+        7
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.8846227142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        6,
+        8
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8468821428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        6,
+        9
+      ],
+      "prompts": [
+        " AG",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.8833882142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        7,
+        8
+      ],
+      "prompts": [
+        " AG",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8491961428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        7,
+        9
+      ],
+      "prompts": [
+        " AG",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.8822443571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        8,
+        9
+      ],
+      "prompts": [
+        " AG",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8443065714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        "_act"
+      ],
+      "auc": 0.8148565
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        4
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        ".SEVERE"
+      ],
+      "auc": 0.8004462142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        "an"
+      ],
+      "auc": 0.866088357142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " conect"
+      ],
+      "auc": 0.8706170714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " compete"
+      ],
+      "auc": 0.8562496428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        ".Set"
+      ],
+      "auc": 0.8131948571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "forward",
+        " SPECIAL"
+      ],
+      "auc": 0.857428357142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        4
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.8171533571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        "an"
+      ],
+      "auc": 0.8709096428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.8737646428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.8665667857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.823112357142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.8626299285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        5
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.8670577142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.8693303571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.8564272142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.8151731428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.8570372857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        6
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " conect"
+      ],
+      "auc": 0.8954285000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " compete"
+      ],
+      "auc": 0.8860065714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.8628305000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.8905090714285713
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        6,
+        7
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.8887985714285713
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        6,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8627363571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        6,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.8926801428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        7,
+        8
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8548587857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        7,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.8865819285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        8,
+        9
+      ],
+      "prompts": [
+        "_STRUCTURE",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8588755
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        4
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        ".SEVERE"
+      ],
+      "auc": 0.7570132142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        5
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        "an"
+      ],
+      "auc": 0.8585687857142856
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        6
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " conect"
+      ],
+      "auc": 0.8649592857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        7
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " compete"
+      ],
+      "auc": 0.8625587857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        8
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        ".Set"
+      ],
+      "auc": 0.794683142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        9
+      ],
+      "prompts": [
+        "forward",
+        "_act",
+        " SPECIAL"
+      ],
+      "auc": 0.8389220714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        5
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.8552699285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        6
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.8617495000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        7
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.8509641428571427
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        8
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.7852003571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        9
+      ],
+      "prompts": [
+        "forward",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.8320435714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        6
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " conect"
+      ],
+      "auc": 0.8918952142857144
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        7
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " compete"
+      ],
+      "auc": 0.8845622857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        8
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.8518927142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        9
+      ],
+      "prompts": [
+        "forward",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.8849423571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        6,
+        7
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.8897228571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        6,
+        8
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8518915
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        6,
+        9
+      ],
+      "prompts": [
+        "forward",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.8886389999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        7,
+        8
+      ],
+      "prompts": [
+        "forward",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8497534285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        7,
+        9
+      ],
+      "prompts": [
+        "forward",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.8854248571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        8,
+        9
+      ],
+      "prompts": [
+        "forward",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8443353571428573
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        5
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        "an"
+      ],
+      "auc": 0.8602727857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        6
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " conect"
+      ],
+      "auc": 0.8643075
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        7
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " compete"
+      ],
+      "auc": 0.8619178571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        8
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        ".Set"
+      ],
+      "auc": 0.7993219285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        9
+      ],
+      "prompts": [
+        "_act",
+        ".SEVERE",
+        " SPECIAL"
+      ],
+      "auc": 0.8404862142857141
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        6
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " conect"
+      ],
+      "auc": 0.892413142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        7
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " compete"
+      ],
+      "auc": 0.8893529285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        8
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.8569829999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        9
+      ],
+      "prompts": [
+        "_act",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.8861246428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        6,
+        7
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.8930608571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        6,
+        8
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8554331428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        6,
+        9
+      ],
+      "prompts": [
+        "_act",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.8878283571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        7,
+        8
+      ],
+      "prompts": [
+        "_act",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8589172857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        7,
+        9
+      ],
+      "prompts": [
+        "_act",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.8892597142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        8,
+        9
+      ],
+      "prompts": [
+        "_act",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8484952857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        6
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " conect"
+      ],
+      "auc": 0.8912810714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        7
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " compete"
+      ],
+      "auc": 0.8838862857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        ".Set"
+      ],
+      "auc": 0.8532649285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        "an",
+        " SPECIAL"
+      ],
+      "auc": 0.8847815714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        6,
+        7
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.8881347857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        6,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8511765
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        6,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.8871398571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        7,
+        8
+      ],
+      "prompts": [
+        ".SEVERE",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8495885
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        7,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.8832761428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        8,
+        9
+      ],
+      "prompts": [
+        ".SEVERE",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8448812142857144
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        6,
+        7
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        " compete"
+      ],
+      "auc": 0.9052515714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        6,
+        8
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        ".Set"
+      ],
+      "auc": 0.8857671428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        6,
+        9
+      ],
+      "prompts": [
+        "an",
+        " conect",
+        " SPECIAL"
+      ],
+      "auc": 0.9052939285714287
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        7,
+        8
+      ],
+      "prompts": [
+        "an",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8820403571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        7,
+        9
+      ],
+      "prompts": [
+        "an",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.902238857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        8,
+        9
+      ],
+      "prompts": [
+        "an",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8818692857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        6,
+        7,
+        8
+      ],
+      "prompts": [
+        " conect",
+        " compete",
+        ".Set"
+      ],
+      "auc": 0.8835135714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        6,
+        7,
+        9
+      ],
+      "prompts": [
+        " conect",
+        " compete",
+        " SPECIAL"
+      ],
+      "auc": 0.9058702142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        6,
+        8,
+        9
+      ],
+      "prompts": [
+        " conect",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8811993571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        7,
+        8,
+        9
+      ],
+      "prompts": [
+        " compete",
+        ".Set",
+        " SPECIAL"
+      ],
+      "auc": 0.8814233571428571
+    }
+  ]
+}

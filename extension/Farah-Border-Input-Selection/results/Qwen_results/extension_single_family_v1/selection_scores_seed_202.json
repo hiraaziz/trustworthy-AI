@@ -1,0 +1,389 @@
+{
+  "seed": 202,
+  "protocol": {
+    "experiment": "single_family_selection_v1",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "candidate_prompts": [
+      " AG",
+      "_STRUCTURE",
+      "forward",
+      "_act",
+      ".SEVERE",
+      "an",
+      " conect",
+      " compete",
+      ".Set",
+      " SPECIAL"
+    ],
+    "families": {
+      "magnitude": [
+        "magnitude_2pow_minus0",
+        "magnitude_2pow_minus10",
+        "magnitude_2pow_minus15",
+        "magnitude_2pow_minus20",
+        "magnitude_2pow_minus5"
+      ],
+      "random": [
+        "random_pruning_2pow_minus0",
+        "random_pruning_2pow_minus10",
+        "random_pruning_2pow_minus15",
+        "random_pruning_2pow_minus20",
+        "random_pruning_2pow_minus5"
+      ],
+      "random_noise": [
+        "noise_2pow_minus0",
+        "noise_2pow_minus10",
+        "noise_2pow_minus15",
+        "noise_2pow_minus20",
+        "noise_2pow_minus25",
+        "noise_2pow_minus30",
+        "noise_2pow_minus5"
+      ]
+    },
+    "train_test_pairs": [
+      {
+        "train": "magnitude",
+        "test": "random"
+      },
+      {
+        "train": "magnitude",
+        "test": "random_noise"
+      },
+      {
+        "train": "random",
+        "test": "magnitude"
+      },
+      {
+        "train": "random",
+        "test": "random_noise"
+      },
+      {
+        "train": "random_noise",
+        "test": "magnitude"
+      },
+      {
+        "train": "random_noise",
+        "test": "random"
+      }
+    ],
+    "selection_pool_size": 500,
+    "evaluation_pool_size": 500,
+    "split_method": "Multivariate hypergeometric partition without replacement. Save selection and evaluation counts explicitly.",
+    "rng_method": "Separate deterministic generators derived from SHA-256 of model, seed, operation and identifiers; independent of execution order.",
+    "selected_prompts": 3,
+    "detection_samples_per_prompt": 10,
+    "reference_samples_per_prompt": 50,
+    "simulation_tests_per_class": 1000,
+    "detection_requests_per_test": 30,
+    "resampling": "Independent multinomial reference and detection draws with replacement within the appropriate pool.",
+    "score": "Mean TV distance across selected inputs",
+    "selection": "Rank individual inputs by mean selection AUC over the chosen training variants; retain the top three.",
+    "tie_break": "Original candidate-prompt order",
+    "evaluation": "Evaluate all variants of the test family; average variant AUCs equally.",
+    "strategies": [
+      "performance_based",
+      "entropy_based",
+      "uniform_random_all_120_subsets"
+    ],
+    "variant_budget_curve": {
+      "sizes": "1 through the number of training variants",
+      "subsets": "All combinations at each size; no random subsampling of variant combinations.",
+      "summary": "Average equally across training-variant combinations within each seed, then summarize across seeds."
+    },
+    "entropy_analysis": "Spearman correlation between unchanged selection-pool entropy and individual-input selection AUC, using all variants of each training family. Descriptive analysis on ten inputs; no causal claim.",
+    "comparisons": "Recompute all strategies on the new evaluation pools. Do not combine with previous experiment AUCs.",
+    "cost_scope": "Detection observations only; discovery, selection and reference collection excluded.",
+    "limitations": [
+      "Existing ten-input candidate pools",
+      "Repeated partitions of the same recorded outputs",
+      "Descriptive seed SD, not confidence intervals",
+      "Supplementary experiment designed after earlier results"
+    ]
+  },
+  "source_counts_sha256": "e11ac3bae74488d4aed56c3b44fbb25687d5c5417bbcffaed8e8c9adc397fde5",
+  "auc_by_variant_and_prompt": {
+    "magnitude_2pow_minus0": {
+      " AG": 0.9999999999999999,
+      "_STRUCTURE": 1.0,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 1.0,
+      "an": 0.9999999999999999,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 1.0,
+      " SPECIAL": 0.9999999999999999
+    },
+    "magnitude_2pow_minus10": {
+      " AG": 0.57491,
+      "_STRUCTURE": 0.5557074999999999,
+      "forward": 0.9191805,
+      "_act": 0.5108775000000001,
+      ".SEVERE": 0.5365015,
+      "an": 0.496933,
+      " conect": 0.876536,
+      " compete": 0.6549229999999999,
+      ".Set": 0.5210715,
+      " SPECIAL": 0.5064585
+    },
+    "magnitude_2pow_minus15": {
+      " AG": 0.5677535,
+      "_STRUCTURE": 0.527594,
+      "forward": 0.5108865,
+      "_act": 0.5051725,
+      ".SEVERE": 0.5333005,
+      "an": 0.499862,
+      " conect": 0.4979355,
+      " compete": 0.5629190000000001,
+      ".Set": 0.523487,
+      " SPECIAL": 0.4994449999999999
+    },
+    "magnitude_2pow_minus20": {
+      " AG": 0.5212845,
+      "_STRUCTURE": 0.49567649999999996,
+      "forward": 0.500674,
+      "_act": 0.5282005000000001,
+      ".SEVERE": 0.48991999999999997,
+      "an": 0.503617,
+      " conect": 0.515143,
+      " compete": 0.5100140000000001,
+      ".Set": 0.5110085,
+      " SPECIAL": 0.5050045
+    },
+    "magnitude_2pow_minus5": {
+      " AG": 0.9999999999999999,
+      "_STRUCTURE": 1.0,
+      "forward": 0.4979925,
+      "_act": 0.7941365,
+      ".SEVERE": 0.6232355,
+      "an": 0.9829835,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 0.986899,
+      " SPECIAL": 0.9999999999999999
+    },
+    "random_pruning_2pow_minus0": {
+      " AG": 0.9999999999999999,
+      "_STRUCTURE": 1.0,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 1.0,
+      "an": 0.9999999999999999,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 1.0,
+      " SPECIAL": 0.9999999999999999
+    },
+    "random_pruning_2pow_minus10": {
+      " AG": 0.999448,
+      "_STRUCTURE": 0.9999005000000001,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 0.6029,
+      "an": 0.9934744999999999,
+      " conect": 0.9230375,
+      " compete": 0.9989899999999999,
+      ".Set": 0.9992424999999999,
+      " SPECIAL": 0.999998
+    },
+    "random_pruning_2pow_minus15": {
+      " AG": 0.607694,
+      "_STRUCTURE": 0.6238509999999999,
+      "forward": 0.901123,
+      "_act": 0.6161855,
+      ".SEVERE": 0.6010015000000001,
+      "an": 0.9497105,
+      " conect": 0.9208125,
+      " compete": 0.9837875,
+      ".Set": 0.5913125,
+      " SPECIAL": 0.9811185
+    },
+    "random_pruning_2pow_minus20": {
+      " AG": 0.512984,
+      "_STRUCTURE": 0.5617454999999999,
+      "forward": 0.4889015,
+      "_act": 0.550572,
+      ".SEVERE": 0.7085735,
+      "an": 0.7593270000000001,
+      " conect": 0.8454369999999999,
+      " compete": 0.5951465,
+      ".Set": 0.5341374999999999,
+      " SPECIAL": 0.4904075
+    },
+    "random_pruning_2pow_minus5": {
+      " AG": 0.9999999999999999,
+      "_STRUCTURE": 1.0,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 1.0,
+      "an": 0.9834824999999999,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 1.0,
+      " SPECIAL": 0.9999999999999999
+    },
+    "noise_2pow_minus0": {
+      " AG": 1.0,
+      "_STRUCTURE": 1.0,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 1.0,
+      "an": 0.9999999999999999,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 1.0,
+      " SPECIAL": 1.0
+    },
+    "noise_2pow_minus10": {
+      " AG": 0.9999999999999999,
+      "_STRUCTURE": 1.0,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 1.0,
+      "an": 0.9999999999999999,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 1.0,
+      " SPECIAL": 1.0
+    },
+    "noise_2pow_minus15": {
+      " AG": 0.9741725,
+      "_STRUCTURE": 0.9104735,
+      "forward": 0.482634,
+      "_act": 0.791487,
+      ".SEVERE": 0.5983335000000001,
+      "an": 0.9890555,
+      " conect": 0.999923,
+      " compete": 0.9988435000000001,
+      ".Set": 0.9869065,
+      " SPECIAL": 0.9006375000000001
+    },
+    "noise_2pow_minus20": {
+      " AG": 0.549236,
+      "_STRUCTURE": 0.7925255,
+      "forward": 0.487653,
+      "_act": 0.5134584999999999,
+      ".SEVERE": 0.5548664999999999,
+      "an": 0.7626815,
+      " conect": 0.8981625,
+      " compete": 0.9516695,
+      ".Set": 0.538067,
+      " SPECIAL": 0.7452314999999999
+    },
+    "noise_2pow_minus25": {
+      " AG": 0.499068,
+      "_STRUCTURE": 0.5253095,
+      "forward": 0.5278005,
+      "_act": 0.586893,
+      ".SEVERE": 0.5048635000000001,
+      "an": 0.7105285,
+      " conect": 0.8527095,
+      " compete": 0.5412635,
+      ".Set": 0.5267824999999999,
+      " SPECIAL": 0.7939970000000001
+    },
+    "noise_2pow_minus30": {
+      " AG": 0.5360795,
+      "_STRUCTURE": 0.5180235000000001,
+      "forward": 0.508626,
+      "_act": 0.511161,
+      ".SEVERE": 0.5171325,
+      "an": 0.5084275,
+      " conect": 0.509186,
+      " compete": 0.5170445,
+      ".Set": 0.5338465,
+      " SPECIAL": 0.49514400000000003
+    },
+    "noise_2pow_minus5": {
+      " AG": 0.9999999999999999,
+      "_STRUCTURE": 1.0,
+      "forward": 1.0,
+      "_act": 1.0,
+      ".SEVERE": 1.0,
+      "an": 0.9999999999999999,
+      " conect": 1.0,
+      " compete": 1.0,
+      ".Set": 1.0,
+      " SPECIAL": 1.0
+    }
+  },
+  "entropy_bits": {
+    " AG": 0.972108503637691,
+    "_STRUCTURE": 0.8687212463394045,
+    "forward": 0.31135737042928313,
+    "_act": 0.6712478853829508,
+    ".SEVERE": 0.44311055824469103,
+    "an": 0.9974015885677396,
+    " conect": 0.8812908992306927,
+    " compete": 0.9866165198488093,
+    ".Set": 0.9881489563064276,
+    " SPECIAL": 0.8661236813986259
+  },
+  "family_ranking_scores": {
+    "magnitude": {
+      " AG": 0.7327896,
+      "_STRUCTURE": 0.7157956000000001,
+      "forward": 0.6857467,
+      "_act": 0.6676774,
+      ".SEVERE": 0.6365915000000001,
+      "an": 0.6966791,
+      " conect": 0.7779229,
+      " compete": 0.7455712,
+      ".Set": 0.7084932,
+      " SPECIAL": 0.7021816
+    },
+    "random": {
+      " AG": 0.8240251999999998,
+      "_STRUCTURE": 0.8370993999999999,
+      "forward": 0.8780049,
+      "_act": 0.8333515,
+      ".SEVERE": 0.782495,
+      "an": 0.9371989,
+      " conect": 0.9378574000000001,
+      " compete": 0.9155848000000001,
+      ".Set": 0.8249385,
+      " SPECIAL": 0.8943047999999999
+    },
+    "random_noise": {
+      " AG": 0.7940794285714284,
+      "_STRUCTURE": 0.8209045714285714,
+      "forward": 0.7152447857142857,
+      "_act": 0.7718570714285714,
+      ".SEVERE": 0.7393137142857142,
+      "an": 0.8529561428571427,
+      " conect": 0.8942829999999999,
+      " compete": 0.858403,
+      ".Set": 0.7979432142857142,
+      " SPECIAL": 0.8478585714285715
+    }
+  },
+  "performance_prompts_by_training_family": {
+    "magnitude": [
+      " conect",
+      " compete",
+      " AG"
+    ],
+    "random": [
+      " conect",
+      "an",
+      " compete"
+    ],
+    "random_noise": [
+      " conect",
+      " compete",
+      "an"
+    ]
+  },
+  "entropy_prompts": [
+    "an",
+    ".Set",
+    " compete"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "protocol_sha256": "9072630124b581cedc2ee71f5f6362ab31e64e67d27117503cfda52a7300e6ae",
+  "results": [
+    {
+      "model": "Qwen",
+      "seed": 404,
+      "n_outputs": 500,
+      "training_family": "magnitude",
+      "test_family": "random",
+      "performance_auc": 0.9484902,
+      "entropy_auc": 0.9383227,
+      "random_mean_auc": 0.9233106866666667,
+      "gain_vs_random": 0.025179513333333237,
+      "gain_vs_entropy": 0.010167499999999996,
+      "selected_prompts": [
+        " conect",
+        " compete",
+        " AG"
+      ]
+    },
+    {
+      "model": "Qwen",
+      "seed": 404,
+      "n_outputs": 500,
+      "training_family": "magnitude",
+      "test_family": "random_noise",
+      "performance_auc": 0.8877239285714286,
+      "entropy_auc": 0.8800631428571428,
+      "random_mean_auc": 0.8619192470238095,
+      "gain_vs_random": 0.025804681547619057,
+      "gain_vs_entropy": 0.007660785714285745,
+      "selected_prompts": [
+        " conect",
+        " compete",
+        " AG"
+      ]
+    },
+    {
+      "model": "Qwen",
+      "seed": 404,
+      "n_outputs": 500,
+      "training_family": "random",
+      "test_family": "magnitude",
+      "performance_auc": 0.7405263000000001,
+      "entropy_auc": 0.7208401,
+      "random_mean_auc": 0.7533064191666666,
+      "gain_vs_random": -0.012780119166666548,
+      "gain_vs_entropy": 0.019686200000000098,
+      "selected_prompts": [
+        "an",
+        " conect",
+        " compete"
+      ]
+    },
+    {
+      "model": "Qwen",
+      "seed": 404,
+      "n_outputs": 500,
+      "training_family": "random",
+      "test_family": "random_noise",
+      "performance_auc": 0.8967712142857144,
+      "entropy_auc": 0.8800631428571428,
+      "random_mean_auc": 0.8619192470238095,
+      "gain_vs_random": 0.03485196726190487,
+      "gain_vs_entropy": 0.016708071428571558,
+      "selected_prompts": [
+        "an",
+        " conect",
+        " compete"
+      ]
+    },
+    {
+      "model": "Qwen",
+      "seed": 404,
+      "n_outputs": 500,
+      "training_family": "random_noise",
+      "test_family": "magnitude",
+      "performance_auc": 0.7405263000000001,
+      "entropy_auc": 0.7208401,
+      "random_mean_auc": 0.7533064191666666,
+      "gain_vs_random": -0.012780119166666548,
+      "gain_vs_entropy": 0.019686200000000098,
+      "selected_prompts": [
+        " conect",
+        " compete",
+        "an"
+      ]
+    },
+    {
+      "model": "Qwen",
+      "seed": 404,
+      "n_outputs": 500,
+      "training_family": "random_noise",
+      "test_family": "random",
+      "performance_auc": 0.9684311000000001,
+      "entropy_auc": 0.9383227,
+      "random_mean_auc": 0.9233106866666667,
+      "gain_vs_random": 0.04512041333333339,
+      "gain_vs_entropy": 0.030108400000000146,
+      "selected_prompts": [
+        " conect",
+        " compete",
+        "an"
+      ]
+    }
+  ],
+  "selected_by_family": {
+    "magnitude": [
+      " conect",
+      " compete",
+      " AG"
+    ],
+    "random": [
+      "an",
+      " conect",
+      " compete"
+    ],
+    "random_noise": [
+      " conect",
+      " compete",
+      "an"
+    ]
+  }
+}
