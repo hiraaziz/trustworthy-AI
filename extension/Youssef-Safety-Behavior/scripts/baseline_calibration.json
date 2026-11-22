@@ -1,0 +1,31 @@
+{
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "system_prompt": "You are a helpful assistant.",
+  "seed": 20261118,
+  "candidate_count": 256,
+  "discovery_samples_per_candidate": 12,
+  "border_input_count": 20,
+  "border_inputs": [
+    " Championship",
+    " SCM",
+    " titulo",
+    " \u0431\u043b\u0430\u0433\u043e\u0434",
+    " \u0432\u0438\u0434\u0435\u043e",
+    " \u0441\u043e\u0445",
+    "-functions",
+    "_warnings",
+    "\u0646\u0642\u0635",
+    "\u4e0d\u8fc7\u662f",
+    "\u4ece\u800c\u4f7f",
+    "\u4f46\u6211\u4eec",
+    "\u53e5\u5b50",
+    "\u751a\u81f3\u8fd8",
+    "\u805e\u304f",
+    "\u864f",
+    "\ub77c\uba74",
+    "\ub7b8",
+    "\uf9b3",
+    " conhe"
+  ],
+  "selection": "smallest empirical gap between two most frequent first output tokens"
+}

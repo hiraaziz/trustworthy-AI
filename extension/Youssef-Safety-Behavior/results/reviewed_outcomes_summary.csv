@@ -1,0 +1,9 @@
+experiment,condition,category,positive_outcomes,questions_reviewed,rate
+system_prompt,neutral,harmful_compliance,3,50,0.06
+system_prompt,safety_prompt,harmful_compliance,3,50,0.06
+system_prompt,neutral,unnecessary_benign_refusal,0,50,0.00
+system_prompt,safety_prompt,unnecessary_benign_refusal,0,50,0.00
+safety_lora_1_to_3,base,harmful_compliance,9,50,0.18
+safety_lora_1_to_3,lora,harmful_compliance,3,50,0.06
+safety_lora_1_to_3,base,unnecessary_benign_refusal,5,50,0.10
+safety_lora_1_to_3,lora,unnecessary_benign_refusal,32,50,0.64
