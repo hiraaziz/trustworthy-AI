@@ -1,0 +1,107 @@
+{
+  "experiment": "single_family_selection_v1",
+  "model": "microsoft/Phi-4-mini-instruct",
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "candidate_prompts": [
+    "Benchmark",
+    "\\views",
+    " advised",
+    ".PERM",
+    "_INSTALL",
+    " Ma",
+    " Tecn",
+    " Netz",
+    " veut",
+    " volumes"
+  ],
+  "families": {
+    "magnitude": [
+      "magnitude_2pow_minus0",
+      "magnitude_2pow_minus10",
+      "magnitude_2pow_minus15",
+      "magnitude_2pow_minus20",
+      "magnitude_2pow_minus5"
+    ],
+    "random": [
+      "random_pruning_2pow_minus0",
+      "random_pruning_2pow_minus10",
+      "random_pruning_2pow_minus15",
+      "random_pruning_2pow_minus20",
+      "random_pruning_2pow_minus5"
+    ],
+    "random_noise": [
+      "noise_2pow_minus0",
+      "noise_2pow_minus10",
+      "noise_2pow_minus15",
+      "noise_2pow_minus20",
+      "noise_2pow_minus25",
+      "noise_2pow_minus30",
+      "noise_2pow_minus5"
+    ]
+  },
+  "train_test_pairs": [
+    {
+      "train": "magnitude",
+      "test": "random"
+    },
+    {
+      "train": "magnitude",
+      "test": "random_noise"
+    },
+    {
+      "train": "random",
+      "test": "magnitude"
+    },
+    {
+      "train": "random",
+      "test": "random_noise"
+    },
+    {
+      "train": "random_noise",
+      "test": "magnitude"
+    },
+    {
+      "train": "random_noise",
+      "test": "random"
+    }
+  ],
+  "selection_pool_size": 500,
+  "evaluation_pool_size": 500,
+  "split_method": "Multivariate hypergeometric partition without replacement. Save selection and evaluation counts explicitly.",
+  "rng_method": "Separate deterministic generators derived from SHA-256 of model, seed, operation and identifiers; independent of execution order.",
+  "selected_prompts": 3,
+  "detection_samples_per_prompt": 10,
+  "reference_samples_per_prompt": 50,
+  "simulation_tests_per_class": 1000,
+  "detection_requests_per_test": 30,
+  "resampling": "Independent multinomial reference and detection draws with replacement within the appropriate pool.",
+  "score": "Mean TV distance across selected inputs",
+  "selection": "Rank individual inputs by mean selection AUC over the chosen training variants; retain the top three.",
+  "tie_break": "Original candidate-prompt order",
+  "evaluation": "Evaluate all variants of the test family; average variant AUCs equally.",
+  "strategies": [
+    "performance_based",
+    "entropy_based",
+    "uniform_random_all_120_subsets"
+  ],
+  "variant_budget_curve": {
+    "sizes": "1 through the number of training variants",
+    "subsets": "All combinations at each size; no random subsampling of variant combinations.",
+    "summary": "Average equally across training-variant combinations within each seed, then summarize across seeds."
+  },
+  "entropy_analysis": "Spearman correlation between unchanged selection-pool entropy and individual-input selection AUC, using all variants of each training family. Descriptive analysis on ten inputs; no causal claim.",
+  "comparisons": "Recompute all strategies on the new evaluation pools. Do not combine with previous experiment AUCs.",
+  "cost_scope": "Detection observations only; discovery, selection and reference collection excluded.",
+  "limitations": [
+    "Existing ten-input candidate pools",
+    "Repeated partitions of the same recorded outputs",
+    "Descriptive seed SD, not confidence intervals",
+    "Supplementary experiment designed after earlier results"
+  ]
+}

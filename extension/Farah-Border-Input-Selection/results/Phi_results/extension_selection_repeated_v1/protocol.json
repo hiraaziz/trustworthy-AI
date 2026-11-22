@@ -1,0 +1,117 @@
+{
+  "model": "microsoft/Phi-4-mini-instruct",
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "candidate_prompts": [
+    "Benchmark",
+    "\\views",
+    " advised",
+    ".PERM",
+    "_INSTALL",
+    " Ma",
+    " Tecn",
+    " Netz",
+    " veut",
+    " volumes"
+  ],
+  "selection_pool_size": 500,
+  "evaluation_pool_size": 500,
+  "selected_prompts": 3,
+  "detection_samples_per_prompt": 10,
+  "reference_samples_per_prompt": 50,
+  "simulation_tests": 1000,
+  "detection_requests_per_test": 30,
+  "strategies": [
+    "performance_based",
+    "entropy_based",
+    "uniform_random_subset"
+  ],
+  "selection_aggregation": "Mean prompt AUC within each selection perturbation type, then equal average across selection types",
+  "evaluation_aggregation": "Mean group AUC across variants within each held-out type",
+  "held_out_splits": {
+    "magnitude": {
+      "selection": [
+        "noise_2pow_minus0",
+        "noise_2pow_minus10",
+        "noise_2pow_minus15",
+        "noise_2pow_minus20",
+        "noise_2pow_minus25",
+        "noise_2pow_minus30",
+        "noise_2pow_minus5",
+        "random_pruning_2pow_minus0",
+        "random_pruning_2pow_minus10",
+        "random_pruning_2pow_minus15",
+        "random_pruning_2pow_minus20",
+        "random_pruning_2pow_minus5"
+      ],
+      "evaluation": [
+        "magnitude_2pow_minus0",
+        "magnitude_2pow_minus10",
+        "magnitude_2pow_minus15",
+        "magnitude_2pow_minus20",
+        "magnitude_2pow_minus5"
+      ]
+    },
+    "random": {
+      "selection": [
+        "magnitude_2pow_minus0",
+        "magnitude_2pow_minus10",
+        "magnitude_2pow_minus15",
+        "magnitude_2pow_minus20",
+        "magnitude_2pow_minus5",
+        "noise_2pow_minus0",
+        "noise_2pow_minus10",
+        "noise_2pow_minus15",
+        "noise_2pow_minus20",
+        "noise_2pow_minus25",
+        "noise_2pow_minus30",
+        "noise_2pow_minus5"
+      ],
+      "evaluation": [
+        "random_pruning_2pow_minus0",
+        "random_pruning_2pow_minus10",
+        "random_pruning_2pow_minus15",
+        "random_pruning_2pow_minus20",
+        "random_pruning_2pow_minus5"
+      ]
+    },
+    "random_noise": {
+      "selection": [
+        "magnitude_2pow_minus0",
+        "magnitude_2pow_minus10",
+        "magnitude_2pow_minus15",
+        "magnitude_2pow_minus20",
+        "magnitude_2pow_minus5",
+        "random_pruning_2pow_minus0",
+        "random_pruning_2pow_minus10",
+        "random_pruning_2pow_minus15",
+        "random_pruning_2pow_minus20",
+        "random_pruning_2pow_minus5"
+      ],
+      "evaluation": [
+        "noise_2pow_minus0",
+        "noise_2pow_minus10",
+        "noise_2pow_minus15",
+        "noise_2pow_minus20",
+        "noise_2pow_minus25",
+        "noise_2pow_minus30",
+        "noise_2pow_minus5"
+      ]
+    }
+  },
+  "primary_metric": "Held-out ROC AUC per perturbation type",
+  "resampling": "Split recorded outputs without replacement. Within each pool, independently bootstrap reference and detection samples with replacement.",
+  "cost_scope": "Detection requests only; discovery, selection and reference collection costs excluded.",
+  "limitations": [
+    "Ten previously collected candidate Border Inputs",
+    "Repeated splits reuse the same recorded collection",
+    "Entropy baseline is not a verified original-repository rule",
+    "Collection spans sessions; recovery checks are recorded separately",
+    "Tokenizer regex warning remains an unresolved audit point"
+  ]
+}

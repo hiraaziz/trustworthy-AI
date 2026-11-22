@@ -1,0 +1,389 @@
+{
+  "seed": 303,
+  "protocol": {
+    "experiment": "single_family_selection_v1",
+    "model": "microsoft/Phi-4-mini-instruct",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "candidate_prompts": [
+      "Benchmark",
+      "\\views",
+      " advised",
+      ".PERM",
+      "_INSTALL",
+      " Ma",
+      " Tecn",
+      " Netz",
+      " veut",
+      " volumes"
+    ],
+    "families": {
+      "magnitude": [
+        "magnitude_2pow_minus0",
+        "magnitude_2pow_minus10",
+        "magnitude_2pow_minus15",
+        "magnitude_2pow_minus20",
+        "magnitude_2pow_minus5"
+      ],
+      "random": [
+        "random_pruning_2pow_minus0",
+        "random_pruning_2pow_minus10",
+        "random_pruning_2pow_minus15",
+        "random_pruning_2pow_minus20",
+        "random_pruning_2pow_minus5"
+      ],
+      "random_noise": [
+        "noise_2pow_minus0",
+        "noise_2pow_minus10",
+        "noise_2pow_minus15",
+        "noise_2pow_minus20",
+        "noise_2pow_minus25",
+        "noise_2pow_minus30",
+        "noise_2pow_minus5"
+      ]
+    },
+    "train_test_pairs": [
+      {
+        "train": "magnitude",
+        "test": "random"
+      },
+      {
+        "train": "magnitude",
+        "test": "random_noise"
+      },
+      {
+        "train": "random",
+        "test": "magnitude"
+      },
+      {
+        "train": "random",
+        "test": "random_noise"
+      },
+      {
+        "train": "random_noise",
+        "test": "magnitude"
+      },
+      {
+        "train": "random_noise",
+        "test": "random"
+      }
+    ],
+    "selection_pool_size": 500,
+    "evaluation_pool_size": 500,
+    "split_method": "Multivariate hypergeometric partition without replacement. Save selection and evaluation counts explicitly.",
+    "rng_method": "Separate deterministic generators derived from SHA-256 of model, seed, operation and identifiers; independent of execution order.",
+    "selected_prompts": 3,
+    "detection_samples_per_prompt": 10,
+    "reference_samples_per_prompt": 50,
+    "simulation_tests_per_class": 1000,
+    "detection_requests_per_test": 30,
+    "resampling": "Independent multinomial reference and detection draws with replacement within the appropriate pool.",
+    "score": "Mean TV distance across selected inputs",
+    "selection": "Rank individual inputs by mean selection AUC over the chosen training variants; retain the top three.",
+    "tie_break": "Original candidate-prompt order",
+    "evaluation": "Evaluate all variants of the test family; average variant AUCs equally.",
+    "strategies": [
+      "performance_based",
+      "entropy_based",
+      "uniform_random_all_120_subsets"
+    ],
+    "variant_budget_curve": {
+      "sizes": "1 through the number of training variants",
+      "subsets": "All combinations at each size; no random subsampling of variant combinations.",
+      "summary": "Average equally across training-variant combinations within each seed, then summarize across seeds."
+    },
+    "entropy_analysis": "Spearman correlation between unchanged selection-pool entropy and individual-input selection AUC, using all variants of each training family. Descriptive analysis on ten inputs; no causal claim.",
+    "comparisons": "Recompute all strategies on the new evaluation pools. Do not combine with previous experiment AUCs.",
+    "cost_scope": "Detection observations only; discovery, selection and reference collection excluded.",
+    "limitations": [
+      "Existing ten-input candidate pools",
+      "Repeated partitions of the same recorded outputs",
+      "Descriptive seed SD, not confidence intervals",
+      "Supplementary experiment designed after earlier results"
+    ]
+  },
+  "source_counts_sha256": "f89f9955b950b9e37b6516bc0d18f73537b36aeb6f6770c184b3fd3a3f149baa",
+  "auc_by_variant_and_prompt": {
+    "magnitude_2pow_minus0": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 1.0,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    },
+    "magnitude_2pow_minus10": {
+      "Benchmark": 0.998035,
+      "\\views": 0.5127325,
+      " advised": 0.5047675,
+      ".PERM": 0.9328059999999999,
+      "_INSTALL": 0.5814385000000001,
+      " Ma": 0.6292705,
+      " Tecn": 0.8418735,
+      " Netz": 0.995768,
+      " veut": 0.688052,
+      " volumes": 0.879918
+    },
+    "magnitude_2pow_minus15": {
+      "Benchmark": 0.675174,
+      "\\views": 0.5277585,
+      " advised": 0.493369,
+      ".PERM": 0.9293790000000001,
+      "_INSTALL": 0.517961,
+      " Ma": 0.9720619999999999,
+      " Tecn": 0.9837345000000001,
+      " Netz": 0.561525,
+      " veut": 0.6349450000000001,
+      " volumes": 0.545065
+    },
+    "magnitude_2pow_minus20": {
+      "Benchmark": 0.48927950000000003,
+      "\\views": 0.511363,
+      " advised": 0.4964575,
+      ".PERM": 0.5368280000000001,
+      "_INSTALL": 0.480083,
+      " Ma": 0.49765649999999995,
+      " Tecn": 0.490384,
+      " Netz": 0.5104185,
+      " veut": 0.5205195,
+      " volumes": 0.5150595
+    },
+    "magnitude_2pow_minus5": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 1.0,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    },
+    "random_pruning_2pow_minus0": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 1.0,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    },
+    "random_pruning_2pow_minus10": {
+      "Benchmark": 0.9995664999999999,
+      "\\views": 1.0,
+      " advised": 0.6012915000000001,
+      ".PERM": 0.9999935,
+      "_INSTALL": 0.9999999999999999,
+      " Ma": 0.969756,
+      " Tecn": 1.0,
+      " Netz": 0.8287775,
+      " veut": 0.845925,
+      " volumes": 0.9999885000000001
+    },
+    "random_pruning_2pow_minus15": {
+      "Benchmark": 0.998494,
+      "\\views": 0.7914769999999999,
+      " advised": 0.9982599999999999,
+      ".PERM": 0.9993465,
+      "_INSTALL": 0.8901384999999999,
+      " Ma": 0.9704854999999999,
+      " Tecn": 0.9998035,
+      " Netz": 0.827627,
+      " veut": 0.9695665,
+      " volumes": 0.700964
+    },
+    "random_pruning_2pow_minus20": {
+      "Benchmark": 0.9927954999999999,
+      "\\views": 0.6843055,
+      " advised": 0.5923350000000001,
+      ".PERM": 0.877424,
+      "_INSTALL": 0.6368335,
+      " Ma": 0.538421,
+      " Tecn": 0.5509415,
+      " Netz": 0.612022,
+      " veut": 0.5342655,
+      " volumes": 0.5159315
+    },
+    "random_pruning_2pow_minus5": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 0.9999999999999999,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    },
+    "noise_2pow_minus0": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 1.0,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    },
+    "noise_2pow_minus10": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 0.9999999999999999,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    },
+    "noise_2pow_minus15": {
+      "Benchmark": 0.9482735000000001,
+      "\\views": 0.9865995,
+      " advised": 0.7352454999999999,
+      ".PERM": 0.9346755,
+      "_INSTALL": 1.0,
+      " Ma": 0.9423950000000001,
+      " Tecn": 0.9967975,
+      " Netz": 1.0,
+      " veut": 0.96879,
+      " volumes": 0.999767
+    },
+    "noise_2pow_minus20": {
+      "Benchmark": 0.8819414999999999,
+      "\\views": 0.979345,
+      " advised": 0.487139,
+      ".PERM": 0.911567,
+      "_INSTALL": 0.6214559999999999,
+      " Ma": 0.5822554999999999,
+      " Tecn": 0.9326075,
+      " Netz": 0.5222515000000001,
+      " veut": 0.9706235,
+      " volumes": 0.518233
+    },
+    "noise_2pow_minus25": {
+      "Benchmark": 0.565416,
+      "\\views": 0.504105,
+      " advised": 0.5058225000000001,
+      ".PERM": 0.9078030000000001,
+      "_INSTALL": 0.5117175,
+      " Ma": 0.8366475,
+      " Tecn": 0.917088,
+      " Netz": 0.5891075,
+      " veut": 0.746278,
+      " volumes": 0.595833
+    },
+    "noise_2pow_minus30": {
+      "Benchmark": 0.502639,
+      "\\views": 0.5218754999999999,
+      " advised": 0.501651,
+      ".PERM": 0.5485300000000001,
+      "_INSTALL": 0.5030365,
+      " Ma": 0.49024349999999994,
+      " Tecn": 0.48746199999999995,
+      " Netz": 0.5073795,
+      " veut": 0.5238315,
+      " volumes": 0.49572650000000007
+    },
+    "noise_2pow_minus5": {
+      "Benchmark": 1.0,
+      "\\views": 1.0,
+      " advised": 1.0,
+      ".PERM": 1.0,
+      "_INSTALL": 0.9999999999999999,
+      " Ma": 1.0,
+      " Tecn": 1.0,
+      " Netz": 1.0,
+      " veut": 1.0,
+      " volumes": 1.0
+    }
+  },
+  "entropy_bits": {
+    "Benchmark": 0.9228919718923305,
+    "\\views": 0.9953784388202257,
+    " advised": 0.41611895125187054,
+    ".PERM": 0.8861256474645222,
+    "_INSTALL": 0.8414646362081757,
+    " Ma": 0.9621696332193179,
+    " Tecn": 0.6484721588056481,
+    " Netz": 0.7259101060407926,
+    " veut": 0.9673324338116666,
+    " volumes": 0.8931734583778568
+  },
+  "family_ranking_scores": {
+    "magnitude": {
+      "Benchmark": 0.8324977,
+      "\\views": 0.7103708000000001,
+      " advised": 0.6989188000000001,
+      ".PERM": 0.8798026,
+      "_INSTALL": 0.7158965,
+      " Ma": 0.8197977999999999,
+      " Tecn": 0.8631984000000001,
+      " Netz": 0.8135422999999999,
+      " veut": 0.7687033,
+      " volumes": 0.7880085
+    },
+    "random": {
+      "Benchmark": 0.9981712,
+      "\\views": 0.8951565,
+      " advised": 0.8383773,
+      ".PERM": 0.9753527999999999,
+      "_INSTALL": 0.9053943999999999,
+      " Ma": 0.8957325,
+      " Tecn": 0.910149,
+      " Netz": 0.8536853000000001,
+      " veut": 0.8699514,
+      " volumes": 0.8433768
+    },
+    "random_noise": {
+      "Benchmark": 0.84261,
+      "\\views": 0.8559892857142858,
+      " advised": 0.7471225714285714,
+      ".PERM": 0.9003679285714287,
+      "_INSTALL": 0.8051728571428571,
+      " Ma": 0.8359345000000001,
+      " Tecn": 0.9048507142857142,
+      " Netz": 0.8026769285714286,
+      " veut": 0.8870747142857143,
+      " volumes": 0.8013656428571428
+    }
+  },
+  "performance_prompts_by_training_family": {
+    "magnitude": [
+      ".PERM",
+      " Tecn",
+      "Benchmark"
+    ],
+    "random": [
+      "Benchmark",
+      ".PERM",
+      " Tecn"
+    ],
+    "random_noise": [
+      " Tecn",
+      ".PERM",
+      " veut"
+    ]
+  },
+  "entropy_prompts": [
+    "\\views",
+    " veut",
+    " Ma"
+  ]
+}

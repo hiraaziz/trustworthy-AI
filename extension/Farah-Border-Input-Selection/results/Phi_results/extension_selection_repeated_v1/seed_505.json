@@ -1,0 +1,5628 @@
+{
+  "seed": 505,
+  "protocol": {
+    "model": "microsoft/Phi-4-mini-instruct",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "candidate_prompts": [
+      "Benchmark",
+      "\\views",
+      " advised",
+      ".PERM",
+      "_INSTALL",
+      " Ma",
+      " Tecn",
+      " Netz",
+      " veut",
+      " volumes"
+    ],
+    "selection_pool_size": 500,
+    "evaluation_pool_size": 500,
+    "selected_prompts": 3,
+    "detection_samples_per_prompt": 10,
+    "reference_samples_per_prompt": 50,
+    "simulation_tests": 1000,
+    "detection_requests_per_test": 30,
+    "strategies": [
+      "performance_based",
+      "entropy_based",
+      "uniform_random_subset"
+    ],
+    "selection_aggregation": "Mean prompt AUC within each selection perturbation type, then equal average across selection types",
+    "evaluation_aggregation": "Mean group AUC across variants within each held-out type",
+    "held_out_splits": {
+      "magnitude": {
+        "selection": [
+          "noise_2pow_minus0",
+          "noise_2pow_minus10",
+          "noise_2pow_minus15",
+          "noise_2pow_minus20",
+          "noise_2pow_minus25",
+          "noise_2pow_minus30",
+          "noise_2pow_minus5",
+          "random_pruning_2pow_minus0",
+          "random_pruning_2pow_minus10",
+          "random_pruning_2pow_minus15",
+          "random_pruning_2pow_minus20",
+          "random_pruning_2pow_minus5"
+        ],
+        "evaluation": [
+          "magnitude_2pow_minus0",
+          "magnitude_2pow_minus10",
+          "magnitude_2pow_minus15",
+          "magnitude_2pow_minus20",
+          "magnitude_2pow_minus5"
+        ]
+      },
+      "random": {
+        "selection": [
+          "magnitude_2pow_minus0",
+          "magnitude_2pow_minus10",
+          "magnitude_2pow_minus15",
+          "magnitude_2pow_minus20",
+          "magnitude_2pow_minus5",
+          "noise_2pow_minus0",
+          "noise_2pow_minus10",
+          "noise_2pow_minus15",
+          "noise_2pow_minus20",
+          "noise_2pow_minus25",
+          "noise_2pow_minus30",
+          "noise_2pow_minus5"
+        ],
+        "evaluation": [
+          "random_pruning_2pow_minus0",
+          "random_pruning_2pow_minus10",
+          "random_pruning_2pow_minus15",
+          "random_pruning_2pow_minus20",
+          "random_pruning_2pow_minus5"
+        ]
+      },
+      "random_noise": {
+        "selection": [
+          "magnitude_2pow_minus0",
+          "magnitude_2pow_minus10",
+          "magnitude_2pow_minus15",
+          "magnitude_2pow_minus20",
+          "magnitude_2pow_minus5",
+          "random_pruning_2pow_minus0",
+          "random_pruning_2pow_minus10",
+          "random_pruning_2pow_minus15",
+          "random_pruning_2pow_minus20",
+          "random_pruning_2pow_minus5"
+        ],
+        "evaluation": [
+          "noise_2pow_minus0",
+          "noise_2pow_minus10",
+          "noise_2pow_minus15",
+          "noise_2pow_minus20",
+          "noise_2pow_minus25",
+          "noise_2pow_minus30",
+          "noise_2pow_minus5"
+        ]
+      }
+    },
+    "primary_metric": "Held-out ROC AUC per perturbation type",
+    "resampling": "Split recorded outputs without replacement. Within each pool, independently bootstrap reference and detection samples with replacement.",
+    "cost_scope": "Detection requests only; discovery, selection and reference collection costs excluded.",
+    "limitations": [
+      "Ten previously collected candidate Border Inputs",
+      "Repeated splits reuse the same recorded collection",
+      "Entropy baseline is not a verified original-repository rule",
+      "Collection spans sessions; recovery checks are recorded separately",
+      "Tokenizer regex warning remains an unresolved audit point"
+    ]
+  },
+  "selections": {
+    "magnitude": {
+      "performance_prompts": [
+        "Benchmark",
+        ".PERM",
+        " Tecn"
+      ],
+      "entropy_prompts": [
+        "\\views",
+        " Ma",
+        " veut"
+      ],
+      "ranking_scores": {
+        "Benchmark": 0.9210597571428571,
+        "\\views": 0.8650051428571428,
+        " advised": 0.7999259285714286,
+        ".PERM": 0.9386724142857144,
+        "_INSTALL": 0.8574534785714287,
+        " Ma": 0.8629543999999999,
+        " Tecn": 0.9099652071428571,
+        " Netz": 0.8312624142857143,
+        " veut": 0.8844851,
+        " volumes": 0.8196058357142857
+      }
+    },
+    "random": {
+      "performance_prompts": [
+        "Benchmark",
+        ".PERM",
+        " Tecn"
+      ],
+      "entropy_prompts": [
+        "\\views",
+        " Ma",
+        " veut"
+      ],
+      "ranking_scores": {
+        "Benchmark": 0.8375761500000001,
+        "\\views": 0.7846402642857143,
+        " advised": 0.7218391071428572,
+        ".PERM": 0.8895231357142857,
+        "_INSTALL": 0.7566092071428572,
+        " Ma": 0.8181229571428571,
+        " Tecn": 0.8894419071428572,
+        " Netz": 0.7924484928571429,
+        " veut": 0.8175687928571429,
+        " volumes": 0.7985787571428571
+      }
+    },
+    "random_noise": {
+      "performance_prompts": [
+        "Benchmark",
+        ".PERM",
+        " Tecn"
+      ],
+      "entropy_prompts": [
+        "\\views",
+        " Ma",
+        " veut"
+      ],
+      "ranking_scores": {
+        "Benchmark": 0.90951425,
+        "\\views": 0.7848349,
+        " advised": 0.7758881500000001,
+        ".PERM": 0.9249757000000001,
+        "_INSTALL": 0.81369125,
+        " Ma": 0.8551671999999999,
+        " Tecn": 0.89236745,
+        " Netz": 0.8392356999999999,
+        " veut": 0.8158774,
+        " volumes": 0.8084837500000001
+      }
+    }
+  },
+  "summary": [
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "performance_auc": 0.9028067,
+      "entropy_auc": 0.8407491,
+      "random_mean_auc": 0.8622584016666667,
+      "random_subset_sd": 0.03327336524610934,
+      "gain_vs_entropy": 0.062057599999999935,
+      "gain_vs_random": 0.04054829833333329
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "performance_auc": 0.9973257,
+      "entropy_auc": 0.942058,
+      "random_mean_auc": 0.9596504608333333,
+      "random_subset_sd": 0.02806687299968979,
+      "gain_vs_entropy": 0.05526770000000003,
+      "gain_vs_random": 0.03767523916666671
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "performance_auc": 0.9248667857142857,
+      "entropy_auc": 0.9116804285714286,
+      "random_mean_auc": 0.8911359892857144,
+      "random_subset_sd": 0.026854857328485353,
+      "gain_vs_entropy": 0.013186357142857097,
+      "gain_vs_random": 0.03373079642857135
+    }
+  ],
+  "subset_results": [
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " advised"
+      ],
+      "auc": 0.8300278999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        ".PERM"
+      ],
+      "auc": 0.8740409
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        "_INSTALL"
+      ],
+      "auc": 0.82677
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Ma"
+      ],
+      "auc": 0.8903041
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Tecn"
+      ],
+      "auc": 0.8961203
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Netz"
+      ],
+      "auc": 0.832054
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " veut"
+      ],
+      "auc": 0.8478726
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        1,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " volumes"
+      ],
+      "auc": 0.8353354
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        ".PERM"
+      ],
+      "auc": 0.8785941999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        "_INSTALL"
+      ],
+      "auc": 0.8292707
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Ma"
+      ],
+      "auc": 0.8935058999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Tecn"
+      ],
+      "auc": 0.8985626999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Netz"
+      ],
+      "auc": 0.8319888000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " veut"
+      ],
+      "auc": 0.8523837000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        2,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " volumes"
+      ],
+      "auc": 0.836262
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.8740168
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.9004224000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9028067
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.8750312999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.8843395
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        3,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.8741329
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8898222
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.8939212
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8306747
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.8486179999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        4,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.8332453000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9022244
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8934372999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.8957093
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        5,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8911642000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        6,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.8957805000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        6,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.899669
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        6,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.8945873000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        7,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8509543
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        7,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8349641
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        0,
+        8,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8529849
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        ".PERM"
+      ],
+      "auc": 0.8379851
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        4
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        "_INSTALL"
+      ],
+      "auc": 0.7400789999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Ma"
+      ],
+      "auc": 0.8188784
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Tecn"
+      ],
+      "auc": 0.8660792
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Netz"
+      ],
+      "auc": 0.8158266
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " veut"
+      ],
+      "auc": 0.7769064
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        2,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " volumes"
+      ],
+      "auc": 0.7841756
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        4
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.8359656999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.869457
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.8933862000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.8692731
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.8531787999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        3,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.8544326
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8261439000000002
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.8657223999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8160935
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.7848040000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        4,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.788048
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.873712
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8903443
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.8407491
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        5,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8573499
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        6,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.8971587
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        6,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.8734257
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        6,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.8814846
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        7,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8387359
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        7,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8226998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        1,
+        8,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8145138
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        4
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.8515368000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        5
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.8770341
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        6
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.8986623999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        7
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.8754381999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        8
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.8645695
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        3,
+        9
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.8640148
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        5
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8330580000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        6
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.8740393000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        7
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8162844
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        8
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.7925818
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        4,
+        9
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.7927329000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        6
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.8783733999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        7
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8934456
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.8466095000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        5,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8638163999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        6,
+        7
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.8989147
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        6,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.8807323
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        6,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.8861238
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        7,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8423237
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        7,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8212583999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        2,
+        8,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8216924000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        5
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8766206999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        6
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.8960887
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8702498000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.8617919
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        4,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.8603543
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        6
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.8961815999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.9000246000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.8821625999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        5,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8881636
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        6,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9034645999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        6,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.8981325
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        6,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.8978635
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        7,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8818521
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        7,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8694409000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        3,
+        8,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8716875999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        6
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.8791474999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        7
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8901592999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.8512364
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        5,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8632131000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        6,
+        7
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.8963484000000002
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        6,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.8797352
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        6,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.8834500999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        7,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8403375000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        7,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8207576
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        4,
+        8,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8221091999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        6,
+        7
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9024087
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        6,
+        8
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.8842139
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        6,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.8907342
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        7,
+        8
+      ],
+      "prompts": [
+        " Ma",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8948347999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        7,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8887826000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        5,
+        8,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8723547
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        6,
+        7,
+        8
+      ],
+      "prompts": [
+        " Tecn",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8994781
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        6,
+        7,
+        9
+      ],
+      "prompts": [
+        " Tecn",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8937103000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        6,
+        8,
+        9
+      ],
+      "prompts": [
+        " Tecn",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8894355
+    },
+    {
+      "seed": 505,
+      "held_out_type": "magnitude",
+      "prompt_indices": [
+        7,
+        8,
+        9
+      ],
+      "prompts": [
+        " Netz",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8430309000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " advised"
+      ],
+      "auc": 0.9958781
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        ".PERM"
+      ],
+      "auc": 0.9983589
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        "_INSTALL"
+      ],
+      "auc": 0.9956474
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Ma"
+      ],
+      "auc": 0.9941390999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Tecn"
+      ],
+      "auc": 0.9947893000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Netz"
+      ],
+      "auc": 0.9961886
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " veut"
+      ],
+      "auc": 0.9943643999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        1,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " volumes"
+      ],
+      "auc": 0.9928435
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        ".PERM"
+      ],
+      "auc": 0.9978916
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        "_INSTALL"
+      ],
+      "auc": 0.9952799999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Ma"
+      ],
+      "auc": 0.9926815999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Tecn"
+      ],
+      "auc": 0.9940951
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Netz"
+      ],
+      "auc": 0.9960115
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " veut"
+      ],
+      "auc": 0.992218
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        2,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " volumes"
+      ],
+      "auc": 0.9924548000000002
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.9978244999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.9968092000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9973257
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.9983622999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.9964027999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        3,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.9964714000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.9934768999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9940519
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.9959404
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.9928749
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        4,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.9922266000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9912963999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.9937906999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9897651
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        5,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.9894161
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        6,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9949589
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        6,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9904092999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        6,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9904909
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        7,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9938762000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        7,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9928454
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        0,
+        8,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9888102
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        ".PERM"
+      ],
+      "auc": 0.9747343
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        4
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        "_INSTALL"
+      ],
+      "auc": 0.9551995
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Ma"
+      ],
+      "auc": 0.9482449000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Tecn"
+      ],
+      "auc": 0.9411425
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Netz"
+      ],
+      "auc": 0.9582967
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " veut"
+      ],
+      "auc": 0.9393382000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        2,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " volumes"
+      ],
+      "auc": 0.9401347000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        4
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.9777704
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.9734586000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9703317
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.9794276999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.9683825
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        3,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.9691658000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.9539924
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9514343000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.95739
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.9472311
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        4,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.9356500000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9448504
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.9560231
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.942058
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        5,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.9357340000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        6,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9548873999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        6,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9350801000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        6,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9369748999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        7,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9494203999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        7,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9361246
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        1,
+        8,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9280662
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        4
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.9732426000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        5
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.9648202999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        6
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9630488999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        7
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.9742178000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        8
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.9576876000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        3,
+        9
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.9601191
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        5
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.9395085
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        6
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9311327
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        7
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.9518108999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        8
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.9283288000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        4,
+        9
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.9291619000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        6
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9208316
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        7
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.9368047
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9108024
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        5,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.9205666999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        6,
+        7
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9354105
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        6,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9065299
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        6,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9090068
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        7,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9085029
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        7,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9335898
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        2,
+        8,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9081312
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        5
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.9709015000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        6
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9688618999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.9785378999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.9645285000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        4,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.9658099
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        6
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.960796
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.9722066999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9568430000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        5,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.9587039
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        6,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9701348
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        6,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9535192
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        6,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9550799
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        7,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9663663
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        7,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9674555999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        3,
+        8,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9520198000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        6
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9366975
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        7
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.9521343999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9332796
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        5,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.9285593000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        6,
+        7
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9492358
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        6,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9250343000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        6,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9264808
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        7,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9435882
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        7,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9298247
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        4,
+        8,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9187947
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        6,
+        7
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9406326
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        6,
+        8
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9158532000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        6,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9184843
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        7,
+        8
+      ],
+      "prompts": [
+        " Ma",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9322473
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        7,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9309377000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        5,
+        8,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9140158999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        6,
+        7,
+        8
+      ],
+      "prompts": [
+        " Tecn",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9291881
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        6,
+        7,
+        9
+      ],
+      "prompts": [
+        " Tecn",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9312303
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        6,
+        8,
+        9
+      ],
+      "prompts": [
+        " Tecn",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9051881999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random",
+      "prompt_indices": [
+        7,
+        8,
+        9
+      ],
+      "prompts": [
+        " Netz",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9208158000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        2
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " advised"
+      ],
+      "auc": 0.8617957142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        3
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        ".PERM"
+      ],
+      "auc": 0.899059357142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        "_INSTALL"
+      ],
+      "auc": 0.8610539285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Ma"
+      ],
+      "auc": 0.8930032857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Tecn"
+      ],
+      "auc": 0.9164732142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " Netz"
+      ],
+      "auc": 0.8650662142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " veut"
+      ],
+      "auc": 0.8944025714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        1,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        "\\views",
+        " volumes"
+      ],
+      "auc": 0.8686345
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        3
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        ".PERM"
+      ],
+      "auc": 0.8894884285714287
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        "_INSTALL"
+      ],
+      "auc": 0.8397836428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Ma"
+      ],
+      "auc": 0.8723222857142856
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Tecn"
+      ],
+      "auc": 0.9116553571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " Netz"
+      ],
+      "auc": 0.8392292857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " veut"
+      ],
+      "auc": 0.890536
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        2,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " advised",
+        " volumes"
+      ],
+      "auc": 0.8434112857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        4
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.8876861428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.904951
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9248667857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.8894138571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.9126165
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        3,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.8901916428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        5
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8753759285714287
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9089054999999998
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8427573571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.8883959285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        4,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.8473751428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        6
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.918224
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8746619999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9085617857142856
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        5,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8737634285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        6,
+        7
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9120789285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        6,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9232047142857144
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        6,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9096329285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        7,
+        8
+      ],
+      "prompts": [
+        "Benchmark",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8927822142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        7,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8448414285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        0,
+        8,
+        9
+      ],
+      "prompts": [
+        "Benchmark",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8937752857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        3
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        ".PERM"
+      ],
+      "auc": 0.9007027857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        4
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        "_INSTALL"
+      ],
+      "auc": 0.8542631428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Ma"
+      ],
+      "auc": 0.8884319285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Tecn"
+      ],
+      "auc": 0.9183322142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " Netz"
+      ],
+      "auc": 0.8574101428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " veut"
+      ],
+      "auc": 0.8942132857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        2,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " advised",
+        " volumes"
+      ],
+      "auc": 0.8619721428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        4
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.8957857857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.9132609285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9283180714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.8996185714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.9149704285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        3,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.901741642857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        5
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8867794999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9139323571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8560341428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.8910383571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        4,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.860716
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        6
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9237579285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8883479285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9116804285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        5,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8892669285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        6,
+        7
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9182127142857144
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        6,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9251739285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        6,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9168522857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        7,
+        8
+      ],
+      "prompts": [
+        "\\views",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8964104285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        7,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8619627142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        1,
+        8,
+        9
+      ],
+      "prompts": [
+        "\\views",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.898186
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        4
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        "_INSTALL"
+      ],
+      "auc": 0.8801869285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        5
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Ma"
+      ],
+      "auc": 0.893317642857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        6
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Tecn"
+      ],
+      "auc": 0.9237103571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        7
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " Netz"
+      ],
+      "auc": 0.8789666428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        8
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " veut"
+      ],
+      "auc": 0.9122036428571431
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        3,
+        9
+      ],
+      "prompts": [
+        " advised",
+        ".PERM",
+        " volumes"
+      ],
+      "auc": 0.8805654285714287
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        5
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8565565714285716
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        6
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9042470714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        7
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8151362857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        8
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.884612
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        4,
+        9
+      ],
+      "prompts": [
+        " advised",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.8224243571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        6
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9120510714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        7
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.850692642857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9046019285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        5,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8514359999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        6,
+        7
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9066190714285715
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        6,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9234126428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        6,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9039605714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        7,
+        8
+      ],
+      "prompts": [
+        " advised",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8889535714285716
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        7,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8136950000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        2,
+        8,
+        9
+      ],
+      "prompts": [
+        " advised",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8907788571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        5
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Ma"
+      ],
+      "auc": 0.8959277142857144
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        6
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Tecn"
+      ],
+      "auc": 0.9201262857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " Netz"
+      ],
+      "auc": 0.8770875
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " veut"
+      ],
+      "auc": 0.9093398571428571
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        4,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        "_INSTALL",
+        " volumes"
+      ],
+      "auc": 0.8809675714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        6
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9240736428571428
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8939073571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9194062857142856
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        5,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.8932807142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        6,
+        7
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9229659285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        6,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9278964285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        6,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9210002142857142
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        7,
+        8
+      ],
+      "prompts": [
+        ".PERM",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.913448
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        7,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8771488571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        3,
+        8,
+        9
+      ],
+      "prompts": [
+        ".PERM",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9134562857142858
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        6
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " Tecn"
+      ],
+      "auc": 0.9108639999999999
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        7
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " Netz"
+      ],
+      "auc": 0.8566057857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " veut"
+      ],
+      "auc": 0.9036005000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        5,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Ma",
+        " volumes"
+      ],
+      "auc": 0.858563142857143
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        6,
+        7
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9037362857142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        6,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9203324285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        6,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.902877357142857
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        7,
+        8
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.8854165714285714
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        7,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8238501428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        4,
+        8,
+        9
+      ],
+      "prompts": [
+        "_INSTALL",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8877694285714286
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        6,
+        7
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " Netz"
+      ],
+      "auc": 0.9127392142857144
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        6,
+        8
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " veut"
+      ],
+      "auc": 0.9262419285714285
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        6,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " Tecn",
+        " volumes"
+      ],
+      "auc": 0.9098375
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        7,
+        8
+      ],
+      "prompts": [
+        " Ma",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9066816428571427
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        7,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.8525251428571429
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        5,
+        8,
+        9
+      ],
+      "prompts": [
+        " Ma",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9061735000000001
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        6,
+        7,
+        8
+      ],
+      "prompts": [
+        " Tecn",
+        " Netz",
+        " veut"
+      ],
+      "auc": 0.9252078571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        6,
+        7,
+        9
+      ],
+      "prompts": [
+        " Tecn",
+        " Netz",
+        " volumes"
+      ],
+      "auc": 0.9036057857142856
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        6,
+        8,
+        9
+      ],
+      "prompts": [
+        " Tecn",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.9228238571428572
+    },
+    {
+      "seed": 505,
+      "held_out_type": "random_noise",
+      "prompt_indices": [
+        7,
+        8,
+        9
+      ],
+      "prompts": [
+        " Netz",
+        " veut",
+        " volumes"
+      ],
+      "auc": 0.8913554285714287
+    }
+  ]
+}

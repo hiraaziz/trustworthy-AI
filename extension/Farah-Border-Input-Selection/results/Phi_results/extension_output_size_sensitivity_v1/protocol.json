@@ -1,0 +1,107 @@
+{
+  "experiment": "recorded_output_size_sensitivity_v1",
+  "model": "microsoft/Phi-4-mini-instruct",
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "recorded_outputs_per_input_version": [
+    250,
+    500,
+    1000
+  ],
+  "pool_sizes": {
+    "250": 125,
+    "500": 250,
+    "1000": 500
+  },
+  "candidate_prompts": [
+    "Benchmark",
+    "\\views",
+    " advised",
+    ".PERM",
+    "_INSTALL",
+    " Ma",
+    " Tecn",
+    " Netz",
+    " veut",
+    " volumes"
+  ],
+  "families": {
+    "magnitude": [
+      "magnitude_2pow_minus0",
+      "magnitude_2pow_minus10",
+      "magnitude_2pow_minus15",
+      "magnitude_2pow_minus20",
+      "magnitude_2pow_minus5"
+    ],
+    "random": [
+      "random_pruning_2pow_minus0",
+      "random_pruning_2pow_minus10",
+      "random_pruning_2pow_minus15",
+      "random_pruning_2pow_minus20",
+      "random_pruning_2pow_minus5"
+    ],
+    "random_noise": [
+      "noise_2pow_minus0",
+      "noise_2pow_minus10",
+      "noise_2pow_minus15",
+      "noise_2pow_minus20",
+      "noise_2pow_minus25",
+      "noise_2pow_minus30",
+      "noise_2pow_minus5"
+    ]
+  },
+  "train_test_pairs": [
+    {
+      "train": "magnitude",
+      "test": "random"
+    },
+    {
+      "train": "magnitude",
+      "test": "random_noise"
+    },
+    {
+      "train": "random",
+      "test": "magnitude"
+    },
+    {
+      "train": "random",
+      "test": "random_noise"
+    },
+    {
+      "train": "random_noise",
+      "test": "magnitude"
+    },
+    {
+      "train": "random_noise",
+      "test": "random"
+    }
+  ],
+  "selected_inputs": 3,
+  "reference_samples_per_input": 50,
+  "detection_samples_per_input": 10,
+  "simulation_tests_per_class": 1000,
+  "design": "Reuse saved disjoint 500/500 pools. Separately thin each pool without replacement: 500 -> 250 -> 125. Recompute selection and evaluation at every size.",
+  "selection": "Single-family mean individual-input training AUC. Top three; ties follow original candidate order.",
+  "random_baseline": "Mean AUC over all 120 triples",
+  "simulation": "Multinomial sampling with replacement within each pool. Same RNG identifiers across sizes.",
+  "interpretation": "Post-hoc sensitivity analysis of one recorded collection. Seed SD is not a confidence interval. No conclusion about collections larger than 1000.",
+  "numpy_version": "2.4.6",
+  "scipy_version": "1.16.3",
+  "source_file_sha256": {
+    "pools_seed_101.json": "28c0d717bdeae948d42e614b036edfba0023eb832b4ad01f63b89b954750a604",
+    "evaluation_seed_101.json": "cc33ed2ca30df0d0b2ce84a72759c501c43576f4d51743121849901417bfcff7",
+    "pools_seed_202.json": "24da344e54ff0cbbfeb71d39db84ac6f879700a667fb1c4217375045791381ab",
+    "evaluation_seed_202.json": "f00034e193c507f67aef11cd67fa9fbe1b0175c9f68a39ea96d9179f4b253850",
+    "pools_seed_303.json": "45c7339a7b9b000a697396e11a4f49cea97235c71275f12b1ce8ae12613448df",
+    "evaluation_seed_303.json": "0641db5468dea02f20d37cd3ffb81f33ff18d6b71fe734d2ff2cedddb4f6be5d",
+    "pools_seed_404.json": "05082a2ea7c0a134cbf0aa0074f74152fc1e991243b83e21b61c35c27c06d3a6",
+    "evaluation_seed_404.json": "d2a4e6a3aeac8adf05f1a9a55860cce0687f6a755a10c3704a3441387f3dffe4",
+    "pools_seed_505.json": "db1ad1f00c12f37f8c663074df3cc3ef03aab26cfcb9be57996b667256972218",
+    "evaluation_seed_505.json": "78cc283c44d89523302c98509ffd135041c0bf01ba9e20f73b6d59ff4979d563"
+  }
+}

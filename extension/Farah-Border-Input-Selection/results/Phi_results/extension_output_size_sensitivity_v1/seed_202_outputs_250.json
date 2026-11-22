@@ -1,0 +1,124 @@
+{
+  "protocol_sha256": "cd908bac0f9ea2fcbab5d926f28506700303ff239a9c5ad9c72ed6f48c06d138",
+  "results": [
+    {
+      "model": "Phi",
+      "seed": 202,
+      "n_outputs": 250,
+      "training_family": "magnitude",
+      "test_family": "random",
+      "performance_auc": 0.9966425000000001,
+      "entropy_auc": 0.9085222999999999,
+      "random_mean_auc": 0.9503787716666667,
+      "gain_vs_random": 0.046263728333333365,
+      "gain_vs_entropy": 0.0881202000000002,
+      "selected_prompts": [
+        " Tecn",
+        ".PERM",
+        "Benchmark"
+      ]
+    },
+    {
+      "model": "Phi",
+      "seed": 202,
+      "n_outputs": 250,
+      "training_family": "magnitude",
+      "test_family": "random_noise",
+      "performance_auc": 0.9244539285714285,
+      "entropy_auc": 0.9140695714285714,
+      "random_mean_auc": 0.8906027410714284,
+      "gain_vs_random": 0.033851187500000046,
+      "gain_vs_entropy": 0.010384357142857126,
+      "selected_prompts": [
+        " Tecn",
+        ".PERM",
+        "Benchmark"
+      ]
+    },
+    {
+      "model": "Phi",
+      "seed": 202,
+      "n_outputs": 250,
+      "training_family": "random",
+      "test_family": "magnitude",
+      "performance_auc": 0.8601153,
+      "entropy_auc": 0.8931416999999999,
+      "random_mean_auc": 0.8722302391666666,
+      "gain_vs_random": -0.012114939166666616,
+      "gain_vs_entropy": -0.0330263999999999,
+      "selected_prompts": [
+        "Benchmark",
+        ".PERM",
+        "\\views"
+      ]
+    },
+    {
+      "model": "Phi",
+      "seed": 202,
+      "n_outputs": 250,
+      "training_family": "random",
+      "test_family": "random_noise",
+      "performance_auc": 0.8917775714285714,
+      "entropy_auc": 0.9140695714285714,
+      "random_mean_auc": 0.8906027410714284,
+      "gain_vs_random": 0.001174830357142942,
+      "gain_vs_entropy": -0.02229199999999998,
+      "selected_prompts": [
+        "Benchmark",
+        ".PERM",
+        "\\views"
+      ]
+    },
+    {
+      "model": "Phi",
+      "seed": 202,
+      "n_outputs": 250,
+      "training_family": "random_noise",
+      "test_family": "magnitude",
+      "performance_auc": 0.888485,
+      "entropy_auc": 0.8931416999999999,
+      "random_mean_auc": 0.8722302391666666,
+      "gain_vs_random": 0.016254760833333326,
+      "gain_vs_entropy": -0.004656699999999958,
+      "selected_prompts": [
+        ".PERM",
+        "\\views",
+        " Tecn"
+      ]
+    },
+    {
+      "model": "Phi",
+      "seed": 202,
+      "n_outputs": 250,
+      "training_family": "random_noise",
+      "test_family": "random",
+      "performance_auc": 0.9602537999999999,
+      "entropy_auc": 0.9085222999999999,
+      "random_mean_auc": 0.9503787716666667,
+      "gain_vs_random": 0.009875028333333202,
+      "gain_vs_entropy": 0.05173150000000004,
+      "selected_prompts": [
+        ".PERM",
+        "\\views",
+        " Tecn"
+      ]
+    }
+  ],
+  "selected_by_family": {
+    "magnitude": [
+      " Tecn",
+      ".PERM",
+      "Benchmark"
+    ],
+    "random": [
+      "Benchmark",
+      ".PERM",
+      "\\views"
+    ],
+    "random_noise": [
+      ".PERM",
+      "\\views",
+      " Tecn"
+    ]
+  }
+}
